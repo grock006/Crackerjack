@@ -1,0 +1,19 @@
+<h1>Application#Index</h1>
+
+<div ng-controller="searchController">
+
+      <form ng-submit="searchName(name)">
+            <input type="text" ng-model="name" placeholder="Search for restaurant">
+            <button type="submit" value="Search">Submit</button>
+      </form>
+
+      <br>
+
+{{results}}<br>
+{{results.username}}<br>
+{{results.full_name}}<br>
+{{results.bio}}<br>
+{{results.id}}<br>
+<img src="{{results.profile_picture}}">
+
+</div>
