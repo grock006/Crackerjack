@@ -9,11 +9,22 @@
 
       <br>
 
-{{results}}<br>
-{{results.username}}<br>
+<h1>Results</h1>
 {{results.full_name}}<br>
 {{results.bio}}<br>
-{{results.id}}<br>
 <img src="{{results.profile_picture}}">
+<h1>Images</h1>
+<br>
+<div ng-repeat="x in imageresults" style="width:300px;display:inline-block;">
+<img src="{{x.images.thumbnail.url }}">
+</div>
+
+<div ng-repeat="x in reviewresults">
+{{x.content}}<br>
+<br>
+<br>
+<br>
+</div>
+
 
 </div>

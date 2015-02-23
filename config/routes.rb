@@ -4,5 +4,7 @@ Rails.application.routes.draw do
 
     namespace :api do
         get "/searches" => "searches#index"
+        get "/show" => "searches#show"
+        get "/review" => "searches#review"
     end
 end

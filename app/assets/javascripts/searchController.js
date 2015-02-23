@@ -1,4 +1,4 @@
-app.controller("searchController",function($scope, SearchResource){
+app.controller("searchController",function($scope, SearchResource, ImageResource, ReviewResource){
 
   //Show all the User's Itineraries 
    $scope.searchName = function(name){
@@ -6,13 +6,28 @@ app.controller("searchController",function($scope, SearchResource){
     var settings = SearchResource(name);
 
     $scope.results = settings.search(); 
-    
     $scope.results.$promise.then(function(data) {
     $scope.collection = data;
     });
 
- };
+    var images = ImageResource(name);
 
-     
+    $scope.imageresults = []
+    $scope.imageresults = images.search();
+    $scope.imageresults.$promise.then(function(data) {
+    $scope.imageresults = data;
+    });
+
+    var reviews = ReviewResource(name);
+
+    $scope.reviewresults = []
+    $scope.reviewresults = reviews.search();
+    $scope.reviewresults.$promise.then(function(data) {
+    $scope.reviewresults = data;
+    });
+
+ };
+   
 
 });
+
