@@ -28,8 +28,15 @@ module Api
 
   def review
         @name = URI.encode(params[:name])
+        
+        # restaurant review results
         page = open "http://www.google.com/search?q=restaurant+review+#{@name}"
         @html = Nokogiri::HTML page
+
+        # blog review results
+        blog = open "http://www.google.com/search?q=blog+review+#{@name}"
+        @html_two = Nokogiri::HTML blog
+
         # Create empty array called results
         results = []
         
@@ -37,6 +44,11 @@ module Api
         @html.search("cite").each do |cite| 
         results << cite.inner_text 
         end 
+
+        @html_two.search("cite").each do |cite| 
+        results << cite.inner_text 
+        end 
+
 
           #Delete certain results from the array if they match words like "yelp", etc.
           # do multiple strips for each offending phrase, urbanspoon, menupages, tripadvisor
@@ -50,9 +62,10 @@ module Api
           # Take the results array
           result_group = []
           @results.each do |r|
-            result_group << "http://" + r.gsub(" ", "")
+            result_group << URI.encode("http://" + r.gsub(" ", ""))
             @result_group = result_group
           end
+
 
           parser_key_token = "e7bc27e0bdf47322e153753e80eb446381184dba"
           @document_results = []
@@ -61,7 +74,8 @@ module Api
           @document_results << HTTParty.get("http://www.readability.com/api/content/v1/parser?url=#{i}/&token=#{parser_key_token}")
           end
 
-        render json: @document_results
+        render json: @result_group 
+        # @document_results
 
   end
 
