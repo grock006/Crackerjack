@@ -1,4 +1,4 @@
-app.controller("searchController",function($scope, SearchResource, ImageResource, ReviewResource){
+app.controller("searchController",function($scope, SearchResource, ImageResource, ReviewResource, SentimentResource){
 
   //Show all the User's Itineraries 
    $scope.searchName = function(name){
@@ -24,6 +24,15 @@ app.controller("searchController",function($scope, SearchResource, ImageResource
     $scope.reviewresults = reviews.search();
     $scope.reviewresults.$promise.then(function(data) {
     $scope.reviewresults = data;
+    $scope.totalSentiment = data[0]['docSentiment']['score']
+    });
+
+    var sentiments = SentimentResource(name);
+
+    $scope.sentimentresults = []
+    $scope.sentimentresults = sentiments.search();
+    $scope.sentimentresults.$promise.then(function(data) {
+    $scope.sentimentresults = data;
     });
 
  };

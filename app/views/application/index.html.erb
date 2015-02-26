@@ -4,11 +4,12 @@
 
       <form ng-submit="searchName(name)">
             <input type="text" ng-model="name" placeholder="Search for restaurant">
+            <input type="text" placeholder="Zipcode or Address">            
             <button type="submit" value="Search">Submit</button>
       </form>
 
       <br>
-
+<!-- 
 <h1>Results</h1>
 {{results.full_name}}<br>
 {{results.bio}}<br>
@@ -17,15 +18,36 @@
 <br>
 <div ng-repeat="x in imageresults" style="width:300px;display:inline-block;">
 <img src="{{x.images.thumbnail.url }}">
-</div>
+</div> -->
+
 
 <h1>Content</h1>
-<div ng-repeat="x in reviewresults">
-{{x.content}}<br>
+
+<p ng-show="reviewresults.length > 0">Number of Reviews #{{reviewresults.length}}</p>
+<p>Average Rating</p>
+<p># Positive</p>
+<p># Negative</p>
+<!-- Need to add up the percentages and divide by five -->
+
+<div ng-repeat="x in reviewresults track by $index">
+<h1>{{x.title}}</h1><br>
+{{x.author}}
+{{x.excerpt}}<br>
+{{x.url}}<br>
+{{x.lead_image_url}}<br>
 <br>
 <br>
 <br>
+Score: {{x.docSentiment["score"] | number:0}}% {{x.docSentiment["type"] | uppercase}}<br>
+<!-- {{x.docSentiment.type}}<br> -->
 </div>
+
+<!-- <div ng-repeat="x in sentimentresults track by $index">
+	{{x.url}}<br>
+	{{x.docSentiment.score}}<br>
+	{{x.docSentiment.type}}<br>
+</div>
+ -->
 
 
 </div>
