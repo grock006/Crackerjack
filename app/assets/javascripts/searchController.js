@@ -24,7 +24,12 @@ app.controller("searchController",function($scope, SearchResource, ImageResource
     $scope.reviewresults = reviews.search();
     $scope.reviewresults.$promise.then(function(data) {
     $scope.reviewresults = data;
-    $scope.totalSentiment = data[0]['docSentiment']['score']
+
+    $scope.totalSentiment = function(){
+        for(var i = 0; i < reviewresults.length;i++)
+            $scope.averageSentiment = data[i]['docSentiment']['score']++
+    }
+    
     });
 
     var sentiments = SentimentResource(name);

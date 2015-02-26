@@ -23,10 +23,14 @@
 
 <h1>Content</h1>
 
-<p ng-show="reviewresults.length > 0">Number of Reviews #{{reviewresults.length}}</p>
+{{totalSentiment}}
+
+<div ng-show="reviewresults.length > 0">
+<p>Number of Reviews #{{reviewresults.length}}</p>
 <p>Average Rating</p>
 <p># Positive</p>
 <p># Negative</p>
+</div>
 <!-- Need to add up the percentages and divide by five -->
 
 <div ng-repeat="x in reviewresults track by $index">
