@@ -21,7 +21,7 @@ app.controller("searchController",function($scope, SearchResource, ImageResource
     $scope.collection = data;
     });
 
-    var images = ImageResource(name);
+    var images = ImageResource(name, location);
 
     $scope.imageresults = []
     $scope.imageresults = images.search();

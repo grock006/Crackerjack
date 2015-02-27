@@ -19,11 +19,16 @@ module Api
 
 
   def show
-        client = Instagram.client
-        result = client.user_search(params[:name])[0]
-        id = result.id 
-        @result = client.user_recent_media(id).take(8)
-        render json: @result
+        @name = (params[:name])
+        @location = (params[:location])
+        @results = Yelp.client.search( @location, { term: @name, limit: 3 })
+        # get the latitude and longitude coordinates and pass them into Instagram location search
+        @lat = @results.businesses[0].location.coordinate.latitude
+        @lng = @results.businesses[0].location.coordinate.longitude
+
+        @client = Instagram.client
+        @images = @client.media_search(@lat, @lng, distance: 1).take(9)
+        render json: @images
   end
 
   def yelp
@@ -86,7 +91,8 @@ module Api
           results_pass_six = results_pass_five.delete_if {|x| x =~ /zagat/}
           results_pass_seven = results_pass_six.delete_if {|x| x =~ /opentable/}
           results_pass_eight = results_pass_seven.delete_if {|x| x =~ /list/}
-          @results = results_pass_eight
+          results_pass_nine = results_pass_eight.delete_if {|x| x =~ /gayot/}
+          @results = results_pass_nine
 
           # Take the results array
           result_group = []
@@ -149,7 +155,12 @@ module Api
               @url_count = @url_group.count if @url_group.count > 0 
 
               @score_total = @scores.inject{|sum,x| sum + x }
-              @average = @score_total / @scores.count
+
+              if @score_total != nil && @scores.count != nil
+                @average = @score_total / @scores.count
+              else
+                @average = "Not Enough Information to Analyze Reviews"
+              end
 
               # attempt to add content to document results
               # content = @document_results['content']

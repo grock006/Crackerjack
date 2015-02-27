@@ -1,6 +1,6 @@
 app.factory("ImageResource", function($resource) {
 
-  return function(name){
+  return function(name, location){
 
   
   var Resource = $resource('/api/show/:id', {id: '@id'},
@@ -8,7 +8,7 @@ app.factory("ImageResource", function($resource) {
                       search: {
                             method: 'GET', isArray: true,
                             url: '/api/show/:id',
-                            params:{name: name},
+                            params:{name: name, location: location},
                             headers : {'Content-Type' : 'application/json'},
                           } 
                     });

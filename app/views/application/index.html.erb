@@ -24,12 +24,12 @@
 </div> -->
 
 <h1>Instagram</h1>
-{{results.full_name}}<br>
+<!-- {{results.full_name}}<br>
 {{results.bio}}<br>
-<img src="{{results.profile_picture}}">
+<img src="{{results.profile_picture}}"> -->
 <br>
 <div ng-repeat="x in imageresults" style="width:300px;display:inline-block;">
-<img src="{{x.images.thumbnail.url }}">
+<a href="{{x.link}}"><img src="{{x.images.low_resolution.url }}"></a>
 </div>
 
 
