@@ -28,7 +28,7 @@ gem 'angularjs-rails'
 gem 'instagram'
 
 gem 'nokogiri'
-
+gem 'pry-rails'
 gem 'httparty'
 
 # Use ActiveModel has_secure_password

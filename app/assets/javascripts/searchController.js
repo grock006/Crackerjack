@@ -1,5 +1,16 @@
 app.controller("searchController",function($scope, SearchResource, ImageResource, ReviewResource, SentimentResource){
 
+  var num = [1, 2, 3];
+  var total = 0;
+
+ $scope.testSentiment = function(){
+      for(var i = 0; i < num.length; i++){
+         total += num[i]
+         console.log(total);
+         $scope.total = total
+      }
+    };
+
   //Show all the User's Itineraries 
    $scope.searchName = function(name){
   
@@ -23,25 +34,30 @@ app.controller("searchController",function($scope, SearchResource, ImageResource
     $scope.reviewresults = []
     $scope.reviewresults = reviews.search();
     $scope.reviewresults.$promise.then(function(data) {
-    $scope.reviewresults = data;
+    $scope.reviewresults = data;  
+    $scope.totalAverage = data[0]['docSentiment']['totalAverage']
+    console.log(data)     
+    });
 
-    $scope.totalSentiment = function(){
-        for(var i = 0; i < reviewresults.length;i++)
-            $scope.averageSentiment = data[i]['docSentiment']['score']++
-    }
+    console.log("Hello World");
     
-    });
 
-    var sentiments = SentimentResource(name);
+    // var sentiments = SentimentResource(name);
 
-    $scope.sentimentresults = []
-    $scope.sentimentresults = sentiments.search();
-    $scope.sentimentresults.$promise.then(function(data) {
-    $scope.sentimentresults = data;
-    });
+    // $scope.sentimentresults = []
+    // $scope.sentimentresults = sentiments.search();
+    // $scope.sentimentresults.$promise.then(function(data) {
+    // $scope.sentimentresults = data;
+    // });
 
  };
    
 
 });
 
+    // data[0]['docSentiment']['score'] + data[1]['docSentiment']['score']
+
+  // $scope.totalSentiment = function(){
+  //       for(var i = 0; i < reviewresults.length; i++)
+  //           $scope.averageSentiment = data[i]['docSentiment']['score']++
+  //   }

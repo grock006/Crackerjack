@@ -21,37 +21,22 @@
 </div> -->
 
 
-<h1>Content</h1>
-
-{{totalSentiment}}
-
 <div ng-show="reviewresults.length > 0">
-<p>Number of Reviews #{{reviewresults.length}}</p>
-<p>Average Rating</p>
-<p># Positive</p>
-<p># Negative</p>
+<p>{{reviewresults.length}} Reviews</p>
+<p>Critic Rating: {{totalAverage}}%</p>
 </div>
-<!-- Need to add up the percentages and divide by five -->
+
+<h1>Reviews</h1>
 
 <div ng-repeat="x in reviewresults track by $index">
 <h1>{{x.title}}</h1><br>
 {{x.author}}
 {{x.excerpt}}<br>
 {{x.url}}<br>
-{{x.lead_image_url}}<br>
-<br>
-<br>
+<img src="{{x.lead_image_url}}" style="width:20%"><br>
 <br>
 Score: {{x.docSentiment["score"] | number:0}}% {{x.docSentiment["type"] | uppercase}}<br>
-<!-- {{x.docSentiment.type}}<br> -->
 </div>
-
-<!-- <div ng-repeat="x in sentimentresults track by $index">
-	{{x.url}}<br>
-	{{x.docSentiment.score}}<br>
-	{{x.docSentiment.type}}<br>
-</div>
- -->
 
 
 </div>
