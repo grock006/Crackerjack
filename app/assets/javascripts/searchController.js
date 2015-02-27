@@ -1,4 +1,4 @@
-app.controller("searchController",function($scope, SearchResource, ImageResource, ReviewResource, SentimentResource){
+app.controller("searchController",function($scope, SearchResource, ImageResource, ReviewResource, YelpResource){
 
   var num = [1, 2, 3];
   var total = 0;
@@ -12,7 +12,7 @@ app.controller("searchController",function($scope, SearchResource, ImageResource
     };
 
   //Show all the User's Itineraries 
-   $scope.searchName = function(name){
+   $scope.searchName = function(name, location){
   
     var settings = SearchResource(name);
 
@@ -39,8 +39,18 @@ app.controller("searchController",function($scope, SearchResource, ImageResource
     console.log(data)     
     });
 
-    console.log("Hello World");
+    var yelp = YelpResource(name, location);
+
+    $scope.yelpresults = []
+    $scope.yelpresults = yelp.search();
+    $scope.yelpresults.$promise.then(function(data) {
+    $scope.yelpresults = data;
+    });
     
+ };
+   
+
+});
 
     // var sentiments = SentimentResource(name);
 
@@ -49,11 +59,6 @@ app.controller("searchController",function($scope, SearchResource, ImageResource
     // $scope.sentimentresults.$promise.then(function(data) {
     // $scope.sentimentresults = data;
     // });
-
- };
-   
-
-});
 
     // data[0]['docSentiment']['score'] + data[1]['docSentiment']['score']
 

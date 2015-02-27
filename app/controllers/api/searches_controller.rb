@@ -4,27 +4,35 @@ module Api
     require 'open-uri'
     require 'uri'
 
-  # def index
+  def index
   
-  #       def search(name)
-  #       client = Instagram.client
-  #       result = client.user_search(name)
-  #       return result
-  #       end
+        def search(name)
+        client = Instagram.client
+        result = client.user_search(name)
+        return result
+        end
 
-  #       @result = search(params[:name])[0]
-  #       render json: @result
+        @result = search(params[:name])[0]
+        render json: @result
   
-  # end
+  end
 
 
-  # def show
-  #       client = Instagram.client
-  #       result = client.user_search(params[:name])[0]
-  #       id = result.id 
-  #       @result = client.user_recent_media(id).take(8)
-  #       render json: @result
-  # end
+  def show
+        client = Instagram.client
+        result = client.user_search(params[:name])[0]
+        id = result.id 
+        @result = client.user_recent_media(id).take(8)
+        render json: @result
+  end
+
+  def yelp
+     @name = (params[:name])
+     @location = (params[:location])
+     @results = Yelp.client.search( @location, { term: @name, limit: 3 })
+     # get the latitude and longitude coordinates and pass them into Instagram location search
+     render json: @results.businesses
+  end
 
   def review
         @name = URI.encode(params[:name])
@@ -129,7 +137,7 @@ module Api
                 @type_results = []
 
               @sentiment_results.each do |x|
-                @score_results << x['docSentiment']['score'].to_f * 100 + 70 if x['docSentiment'] && x['docSentiment']['score']
+                @score_results << x['docSentiment']['score'].to_f * 100 + 55 if x['docSentiment'] && x['docSentiment']['score']
                 @type_results << x['docSentiment']['type'] if x['docSentiment'] && x['docSentiment']['type']
               end
 
@@ -138,33 +146,38 @@ module Api
                  @scores << x.to_i 
               end
 
-              @url_count = @url_group.count
+              @url_count = @url_group.count if @url_group.count > 0 
 
-              @test = @scores.inject{|sum,x| sum + x }
-              @average = @test / @url_count
+              @score_total = @scores.inject{|sum,x| sum + x }
+              @average = @score_total / @scores.count
 
               # attempt to add content to document results
               # content = @document_results['content']
               # @content = Nokogiri::HTML.parse(content).css('p')[2].text
 
-              # @content = []
-              # @document_results.each do |x|
-              #   @content << x['content'] if x['content']
-              #   # @content << Nokogiri::HTML.parse(@content)
-              # end  
+              @content = []
+              @document_results.each do |x|
+                @content << x['content'] if x['content']
+                # @content << Nokogiri::HTML.parse(@content)
+              end  
 
-              # @test = []
-              # @content.each do |x|
-              #   @test << Nokogiri::HTML.parse(x).css('p')[4].text if Nokogiri::HTML.parse(x).css('p')[4].text
-              # end
+              @content_results = []
+              @content.each do |x|
+                if Nokogiri::HTML.parse(x).css('p')[3] != nil
+                @content_results << Nokogiri::HTML.parse(x).css('p')[3].text 
+                else
+                @content_results << Nokogiri::HTML.parse(x).css('p')[0].text 
+                end
+              end
 
 
 
               (0...@url_count).each do |i|
                   @document_results[i][:docSentiment] = {
-                    score: @score_results[i], 
+                    score: @scores[i], 
                     type: @type_results[i],
-                    totalAverage: @average
+                    totalAverage: @average,
+                    contentExcerpt: @content_results[i]
                   }
                   # Rails.logger.info(i)
               end
@@ -175,6 +188,7 @@ module Api
 
 
         render json: @document_results
+        # @document_results
 
     end
 

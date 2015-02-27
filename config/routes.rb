@@ -7,5 +7,6 @@ Rails.application.routes.draw do
         get "/show" => "searches#show"
         get "/review" => "searches#review"
         get "/sentiment" => "searches#sentiment"
+        get "/results" => "searches#yelp"
     end
 end

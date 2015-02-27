@@ -2,23 +2,35 @@
 
 <div ng-controller="searchController">
 
-      <form ng-submit="searchName(name)">
+      <form ng-submit="searchName(name, location)">
             <input type="text" ng-model="name" placeholder="Search for restaurant">
-            <input type="text" placeholder="Zipcode or Address">            
+            <input type="text" ng-model="location" placeholder="Zipcode or Address or City">            
             <button type="submit" value="Search">Submit</button>
       </form>
 
       <br>
-<!-- 
-<h1>Results</h1>
+
+<h1>Yelp</h1>
+{{yelpresults[0]["hash"].name}}<br>
+{{yelpresults[0]["hash"].location.city}}<br>
+{{yelpresults[0]["hash"].location.display_address[0]}}<br>
+{{yelpresults[0]["hash"].location.neighborhoods[0]}}<br>
+{{yelpresults[0]["hash"].location.state_code}}<br>
+{{yelpresults[0]["hash"].location.postal_code}}<br>
+{{yelpresults[0]["hash"].display_phone}}<br>
+{{yelpresults[0]["hash"].categories[0][0]}}<br>
+<!-- <div ng-repeat="x in yelpresults">
+	{{x.name}}
+</div> -->
+
+<h1>Instagram</h1>
 {{results.full_name}}<br>
 {{results.bio}}<br>
 <img src="{{results.profile_picture}}">
-<h1>Images</h1>
 <br>
 <div ng-repeat="x in imageresults" style="width:300px;display:inline-block;">
 <img src="{{x.images.thumbnail.url }}">
-</div> -->
+</div>
 
 
 <div ng-show="reviewresults.length > 0">
@@ -29,13 +41,14 @@
 <h1>Reviews</h1>
 
 <div ng-repeat="x in reviewresults track by $index">
-<h1>{{x.title}}</h1><br>
-{{x.author}}
-{{x.excerpt}}<br>
-{{x.url}}<br>
-<img src="{{x.lead_image_url}}" style="width:20%"><br>
+<h2>{{x.title}}</h2><br>
+{{x.author}}<br>
+<p>{{x.docSentiment["contentExcerpt"]}}<p>
+<a href="{{x.url}}">Full Review</a><br>
 <br>
-Score: {{x.docSentiment["score"] | number:0}}% {{x.docSentiment["type"] | uppercase}}<br>
+	<div ng-show="x.docSentiment['score'] != null">
+	Score: {{x.docSentiment["score"] | number:0}}% {{x.docSentiment["type"] | uppercase}}<br>
+</div>
 </div>
 
 
