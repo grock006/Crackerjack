@@ -1,4 +1,4 @@
-var app = angular.module("myApp",['ngResource']);
+var app = angular.module("myApp",['ngResource', 'uiGmapgoogle-maps']);
 
 //configuration 
 app.config(['$httpProvider',

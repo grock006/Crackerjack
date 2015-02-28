@@ -2,11 +2,15 @@
 <html ng-app="myApp">
 <head>
   <title>SearchTest</title>
+  <%= javascript_include_tag '//maps.googleapis.com/maps/api/js?sensor=false' %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:900,400,200' rel='stylesheet' type='text/css'>
 </head>
 <body>
+
+<%= render partial: "layouts/nav" %>	
 
 <%= yield %>
 

@@ -4,20 +4,6 @@ module Api
     require 'open-uri'
     require 'uri'
 
-  def index
-  
-        def search(name)
-        client = Instagram.client
-        result = client.user_search(name)
-        return result
-        end
-
-        @result = search(params[:name])[0]
-        render json: @result
-  
-  end
-
-
   def show
         @name = (params[:name])
         @location = (params[:location])

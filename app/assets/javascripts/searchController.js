@@ -1,4 +1,4 @@
-app.controller("searchController",function($scope, SearchResource, ImageResource, ReviewResource, YelpResource){
+app.controller("searchController",function($scope, ImageResource, ReviewResource, YelpResource){
 
   var num = [1, 2, 3];
   var total = 0;
@@ -11,15 +11,10 @@ app.controller("searchController",function($scope, SearchResource, ImageResource
       }
     };
 
+    // $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+
   //Show all the User's Itineraries 
    $scope.searchName = function(name, location){
-  
-    var settings = SearchResource(name);
-
-    $scope.results = settings.search(); 
-    $scope.results.$promise.then(function(data) {
-    $scope.collection = data;
-    });
 
     var images = ImageResource(name, location);
 
@@ -45,24 +40,32 @@ app.controller("searchController",function($scope, SearchResource, ImageResource
     $scope.yelpresults = yelp.search();
     $scope.yelpresults.$promise.then(function(data) {
     $scope.yelpresults = data;
-    });
+    var latitude = data[0]["hash"].location.coordinate.latitude
+    var longitude = data[0]["hash"].location.coordinate.longitude
+    $scope.map = { center: 
+      { latitude: latitude, 
+        longitude: longitude }, 
+        zoom: 16 };
+     $scope.marker = { 
+                id: 1,
+                coords: {
+                latitude: latitude, 
+                longitude: longitude
+                }
+       }
     
+    });
+
  };
    
 
 });
 
-    // var sentiments = SentimentResource(name);
+    // $scope.map.center = {
+    //     latitude: position.coords.latitude,
+    //     longitude: position.coords.longitude
+    //   };
 
-    // $scope.sentimentresults = []
-    // $scope.sentimentresults = sentiments.search();
-    // $scope.sentimentresults.$promise.then(function(data) {
-    // $scope.sentimentresults = data;
-    // });
 
-    // data[0]['docSentiment']['score'] + data[1]['docSentiment']['score']
+   
 
-  // $scope.totalSentiment = function(){
-  //       for(var i = 0; i < reviewresults.length; i++)
-  //           $scope.averageSentiment = data[i]['docSentiment']['score']++
-  //   }
