@@ -1,6 +1,6 @@
 app.factory("ReviewResource", function($resource) {
 
-  return function(name){
+  return function(name, location){
 
   
   var Resource = $resource('/api/review/:id', {id: '@id'},
@@ -8,7 +8,7 @@ app.factory("ReviewResource", function($resource) {
                       search: {
                             method: 'GET', isArray: true,
                             url: '/api/review/:id',
-                            params:{name: name},
+                            params:{name: name, location: location},
                             headers : {'Content-Type' : 'application/json'},
                           } 
                     });

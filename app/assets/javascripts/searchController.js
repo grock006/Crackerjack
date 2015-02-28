@@ -29,7 +29,7 @@ app.controller("searchController",function($scope, SearchResource, ImageResource
     $scope.imageresults = data;
     });
 
-    var reviews = ReviewResource(name);
+    var reviews = ReviewResource(name, location);
 
     $scope.reviewresults = []
     $scope.reviewresults = reviews.search();

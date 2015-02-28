@@ -41,14 +41,16 @@
 <h1>Reviews</h1>
 
 <div ng-repeat="x in reviewresults track by $index">
-<h2>{{x.title}}</h2><br>
-{{x.author}}<br>
+<h2>{{x.domain.replace("www.", "").replace(".com", "") | uppercase }}</h2>	
+<h2>{{x.title}}</h2>
 <p>{{x.docSentiment["contentExcerpt"]}}<p>
 <a href="{{x.url}}">Full Review</a><br>
-<br>
+{{x.author}}<br>
 	<div ng-show="x.docSentiment['score'] != null">
-	Score: {{x.docSentiment["score"] | number:0}}% {{x.docSentiment["type"] | uppercase}}<br>
+	Score: {{x.docSentiment["score"] | number:0}} {{x.docSentiment["type"] | uppercase}}<br>
 </div>
+<br>
+<br>
 </div>
 
 

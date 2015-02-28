@@ -41,13 +41,15 @@ module Api
 
   def review
         @name = URI.encode(params[:name])
+        @location = URI.encode(params[:location])
+        # add address params, enter any address and convert into zip code
         # Need to add zipcode and/or adddress into search params below
         # restaurant review results
-        page = open "http://www.google.com/search?q=restaurant+review+food+#{@name}"
+        page = open "http://www.google.com/search?q=restaurant+review+food+#{@name}+{@location}"
         @html = Nokogiri::HTML page
 
         # blog review results
-        blog = open "http://www.google.com/search?q=blog+review+#{@name}"
+        blog = open "http://www.google.com/search?q=blog+review+#{@name}+#{@location}"
         @html_two = Nokogiri::HTML blog
 
         # Create empty array called results
@@ -159,7 +161,7 @@ module Api
               if @score_total != nil && @scores.count != nil
                 @average = @score_total / @scores.count
               else
-                @average = "Not Enough Information to Analyze Reviews"
+                @average = ":( Sorry, Not Enough Information to Analyze Reviews"
               end
 
               # attempt to add content to document results
@@ -174,10 +176,15 @@ module Api
 
               @content_results = []
               @content.each do |x|
-                if Nokogiri::HTML.parse(x).css('p')[3] != nil
-                @content_results << Nokogiri::HTML.parse(x).css('p')[3].text 
-                else
-                @content_results << Nokogiri::HTML.parse(x).css('p')[0].text 
+                  if Nokogiri::HTML.parse(x).css('p')[2] != nil && Nokogiri::HTML.parse(x).css('p')[3] != nil
+                    @content_results << Nokogiri::HTML.parse(x).css('p')[2].text + Nokogiri::HTML.parse(x).css('p')[3].text
+                    # add another paragraph 
+                  elsif Nokogiri::HTML.parse(x).css('p')[1] != nil && Nokogiri::HTML.parse(x).css('p')[2] != nil
+                    @content_results << Nokogiri::HTML.parse(x).css('p')[1].text + Nokogiri::HTML.parse(x).css('p')[2].text
+                  elsif Nokogiri::HTML.parse(x).css('p')[0] != nil && Nokogiri::HTML.parse(x).css('p')[1] != nil
+                    @content_results << Nokogiri::HTML.parse(x).css('p')[0].text + Nokogiri::HTML.parse(x).css('p')[1].text
+                  else
+                    @content_results << Nokogiri::HTML.parse(x).css('p')[0].text
                 end
               end
 
