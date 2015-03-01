@@ -1,52 +1,65 @@
+<div class="container-fluid">
+	<div class="row">
 
-      <form ng-submit="searchName(name, location)">
-            <input type="text" ng-model="name" placeholder="Search for restaurant">
-            <input type="text" ng-model="location" placeholder="Zipcode or Address or City">            
-            <button type="submit" value="Search">Submit</button>
-      </form>
+		<div class="col-md-6">       
+			<ui-gmap-google-map center='map.center' zoom='map.zoom'>
+				 <ui-gmap-marker coords="marker.coords" idkey="marker.id">
+				 </ui-gmap-marker>
+			</ui-gmap-google-map>
+		</div>
 
-      <br>
-<h1>Map</h1>      
-<ui-gmap-google-map center='map.center' zoom='map.zoom'>
-	 <ui-gmap-marker coords="marker.coords" idkey="marker.id">
-	 </ui-gmap-marker>
-</ui-gmap-google-map>
+		<div class="col-md-6">     
+			<h3 class="bold">{{yelpresults[0]["hash"].name}}<h3>
+				{{yelpresults[0]["hash"].categories[0][0]}}
+			<address>
+				{{yelpresults[0]["hash"].location.display_address[0]}}
+				{{yelpresults[0]["hash"].location.neighborhoods[0]}}<br>
+				{{yelpresults[0]["hash"].location.city}}, {{yelpresults[0]["hash"].location.state_code}}<br>
+				{{yelpresults[0]["hash"].location.postal_code}}<br>
+				{{yelpresults[0]["hash"].display_phone}}<br>
+			</address>
+		</div>
 
-<h1>Yelp</h1>
-{{latitude}}
-{{yelpresults[0]["hash"].name}}<br>
-{{yelpresults[0]["hash"].location.city}}<br>
-{{yelpresults[0]["hash"].location.display_address[0]}}<br>
-{{yelpresults[0]["hash"].location.neighborhoods[0]}}<br>
-{{yelpresults[0]["hash"].location.state_code}}<br>
-{{yelpresults[0]["hash"].location.postal_code}}<br>
-{{yelpresults[0]["hash"].display_phone}}<br>
-{{yelpresults[0]["hash"].categories[0][0]}}<br>
+	</div>
 
-<h1>Instagram</h1>
-<div ng-repeat="x in imageresults" style="width:300px;display:inline-block;">
-<a href="{{x.link}}"><img src="{{x.images.low_resolution.url }}"></a>
+	<hr>
+
+	<div class="row">
+		
+		<div class="col-md-6">  
+			<div ng-repeat="x in imageresults" style="width:150px">
+			<a href="{{x.link}}"><img src="{{x.images.low_resolution.url }}"></a>
+			</div>
+		</div>	
+
+
+		<div class="col-md-6"> 
+			
+				 <div ng-show="reviewresults.length > 0">
+						
+						<h3>{{reviewresults.length}} Reviews</h3>
+						<h3>Critic Rating: {{totalAverage}}%</h3>
+
+			     <h1 class="bold">Reviews</h1>
+
+				<div ng-repeat="x in reviewresults track by $index">
+					<h2 class="bold">{{x.domain.replace("www.", "").replace(".com", "") | uppercase }}</h2>	
+					<h2>{{x.title}}</h2>
+					<p>{{x.docSentiment["contentExcerpt"]}}<p>
+					<a href="{{x.url}}">Full Review</a><br>
+					{{x.author}}<br>
+						<div ng-show="x.docSentiment['score'] != null">
+							Score: {{x.docSentiment["score"] | number:0}} {{x.docSentiment["type"] | uppercase}}<br>
+						</div>
+					<br>
+					<br>
+				</div>
+			 <!-- end ng-show  -->
+			 </div>
+		
+	     </div>
+	<!-- End Row -->
+	</div>
+
+<!-- End Container -->
 </div>
-
-
-<div ng-show="reviewresults.length > 0">
-<p>{{reviewresults.length}} Reviews</p>
-<p>Critic Rating: {{totalAverage}}%</p>
-</div>
-
-<h1>Reviews</h1>
-
-<div ng-repeat="x in reviewresults track by $index">
-<h2>{{x.domain.replace("www.", "").replace(".com", "") | uppercase }}</h2>	
-<h2>{{x.title}}</h2>
-<p>{{x.docSentiment["contentExcerpt"]}}<p>
-<a href="{{x.url}}">Full Review</a><br>
-{{x.author}}<br>
-	<div ng-show="x.docSentiment['score'] != null">
-	Score: {{x.docSentiment["score"] | number:0}} {{x.docSentiment["type"] | uppercase}}<br>
-</div>
-<br>
-<br>
-</div>
-
-

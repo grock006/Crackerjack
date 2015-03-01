@@ -13,7 +13,7 @@ module Api
         @lng = @results.businesses[0].location.coordinate.longitude
 
         @client = Instagram.client
-        @images = @client.media_search(@lat, @lng, distance: 1).take(9)
+        @images = @client.media_search(@lat, @lng, distance: 1).take(8)
         render json: @images
   end
 
