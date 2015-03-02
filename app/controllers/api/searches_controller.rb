@@ -7,13 +7,22 @@ module Api
   def show
         @name = (params[:name])
         @location = (params[:location])
+          
         @results = Yelp.client.search( @location, { term: @name, limit: 3 })
         # get the latitude and longitude coordinates and pass them into Instagram location search
         @lat = @results.businesses[0].location.coordinate.latitude
         @lng = @results.businesses[0].location.coordinate.longitude
 
         @client = Instagram.client
-        @images = @client.media_search(@lat, @lng, distance: 1).take(8)
+
+        @images = @client.media_search(@lat, @lng, distance: 1)
+
+        if @images == true
+          @images = @client.media_search(@lat, @lng, distance: 1).take(8)
+        else
+          @images = @client.media_search(@lat, @lng, distance: 5).take(8)
+        end 
+        
         render json: @images
   end
 
@@ -23,6 +32,7 @@ module Api
      @results = Yelp.client.search( @location, { term: @name, limit: 3 })
      # get the latitude and longitude coordinates and pass them into Instagram location search
      render json: @results.businesses
+     # include images in business results
   end
 
   def review
@@ -80,7 +90,9 @@ module Api
           results_pass_seven = results_pass_six.delete_if {|x| x =~ /opentable/}
           results_pass_eight = results_pass_seven.delete_if {|x| x =~ /list/}
           results_pass_nine = results_pass_eight.delete_if {|x| x =~ /gayot/}
-          @results = results_pass_nine
+          results_pass_ten = results_pass_nine.delete_if {|x| x =~ /google/}
+          results_pass_eleven = results_pass_ten.delete_if {|x| x =~ /tastemade/}
+          @results = results_pass_eleven
 
           # Take the results array
           result_group = []
@@ -117,10 +129,12 @@ module Api
 
               alchemyapi = AlchemyAPI.new()
               @sentiment_results = []
+              @keyword_results = []
               threads = []
               @url_group.each do |i|
                 threads << Thread.new {
-                  @sentiment_results << alchemyapi.sentiment_targeted('url', i, @name)
+                  @sentiment_results << alchemyapi.sentiment('url', i)
+                  @keyword_results << alchemyapi.keywords('url', i)
                 }
                 # @sentiment_results << resp.parsed_response
                  # @sentiment_results.delete_if {|x| x =~ /ERROR/}
@@ -128,11 +142,17 @@ module Api
               threads.each { |t| t.join }
 
                @score_results = []
-                @type_results = []
+               @type_results = []
 
               @sentiment_results.each do |x|
-                @score_results << x['docSentiment']['score'].to_f * 100 + 55 if x['docSentiment'] && x['docSentiment']['score']
+                @score_results << x['docSentiment']['score'].to_f * 100 + 60 if x['docSentiment'] && x['docSentiment']['score']
                 @type_results << x['docSentiment']['type'] if x['docSentiment'] && x['docSentiment']['type']
+              end
+
+              # Keywords
+              @keywords = []
+              @keyword_results.each do |x|
+                @keywords << x['keywords']
               end
 
               @scores = []
@@ -158,7 +178,12 @@ module Api
               @document_results.each do |x|
                 @content << x['content'] if x['content']
                 # @content << Nokogiri::HTML.parse(@content)
-              end  
+              end 
+
+              @second_content = []
+              @content.each do |x|
+                @second_content << alchemyapi.sentiment('html', x)
+              end 
 
               @content_results = []
               @content.each do |x|
@@ -169,8 +194,10 @@ module Api
                     @content_results << Nokogiri::HTML.parse(x).css('p')[1].text + Nokogiri::HTML.parse(x).css('p')[2].text
                   elsif Nokogiri::HTML.parse(x).css('p')[0] != nil && Nokogiri::HTML.parse(x).css('p')[1] != nil
                     @content_results << Nokogiri::HTML.parse(x).css('p')[0].text + Nokogiri::HTML.parse(x).css('p')[1].text
-                  else
+                  elsif Nokogiri::HTML.parse(x).css('p')[0] != nil 
                     @content_results << Nokogiri::HTML.parse(x).css('p')[0].text
+                  else
+                    @content_results << x 
                 end
               end
 
@@ -181,7 +208,8 @@ module Api
                     score: @scores[i], 
                     type: @type_results[i],
                     totalAverage: @average,
-                    contentExcerpt: @content_results[i]
+                    contentExcerpt: @content_results[i],
+                    keywords: @keywords[i]
                   }
                   # Rails.logger.info(i)
               end
@@ -192,6 +220,8 @@ module Api
 
 
         render json: @document_results
+        # @second_content
+        # @sentiment_results
         # @document_results
 
     end

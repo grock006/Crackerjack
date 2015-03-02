@@ -12,11 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
 //= require angular
 //= require angular-resource
+//= require angular-animate
+//= require bootstrap-sprockets
 //= require angular-ui-bootstrap
-//= require turbolinks
+//= require nprogress
+//= require nprogress-angular
+//= require autocomplete
 //= require underscore
 //= require main
 //= require_tree .

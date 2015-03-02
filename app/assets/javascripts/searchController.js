@@ -1,19 +1,40 @@
 app.controller("searchController",function($scope, ImageResource, ReviewResource, YelpResource){
 
-  var num = [1, 2, 3];
-  var total = 0;
+      $scope.movies = ["Lord of the Rings",
+                        "Drive",
+                        "Science of Sleep",
+                        "Back to the Future",
+                        "Oldboy"];
 
- $scope.testSentiment = function(){
-      for(var i = 0; i < num.length; i++){
-         total += num[i]
-         console.log(total);
-         $scope.total = total
-      }
-    };
+        // gives another movie array on change
+        $scope.updateMovies = function(typed){
+            // MovieRetriever could be some service returning a promise
+            $scope.newmovies = MovieRetriever.getmovies(typed);
 
-    // $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 
-  //Show all the User's Itineraries 
+              var url = 'http://api.yelp.com/v2/search';
+              var params = {
+                                callback: 'angular.callbacks._0',
+                                location: 'San+Francisc',
+                                oauth_consumer_key: "Xnvaip0-eY6FzwXXgS-Ctw",
+                                oauth_token: "bSIXuYiiYZWLx7cPiYfQQYB5LCP49ps8",
+                                oauth_signature_method: "HMAC-SHA1",
+                                oauth_timestamp: new Date().getTime(),
+                                oauth_nonce: randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'),
+                                term: 'food'
+                            };
+
+              $http.get(url, {params: params}).success(function(data){
+                    $scope.results = data;
+                    console.log(data)
+                  });
+
+            $scope.newmovies.then(function(data){
+              $scope.movies = data;
+            });
+        }
+
+
    $scope.searchName = function(name, location){
 
     var images = ImageResource(name, location);
@@ -30,7 +51,7 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
     $scope.reviewresults = reviews.search();
     $scope.reviewresults.$promise.then(function(data) {
     $scope.reviewresults = data;  
-    $scope.totalAverage = data[0]['docSentiment']['totalAverage']
+    $scope.totalAverage = parseInt(data[0]['docSentiment']['totalAverage']);
     console.log(data)     
     });
 

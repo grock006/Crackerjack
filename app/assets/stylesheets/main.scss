@@ -1,3 +1,10 @@
+$crimson: #f62b30;
+$yellow: #ffee0a;
+$maroon: #700f12;
+$lightslate: #7c7c98;
+$cadetblue: #5d908c;
+$lightgray: #e7e7e7;
+
 body {
 	font-family: 'Raleway', sans-serif;
 }
@@ -5,6 +12,142 @@ body {
 	font-weight: 800;
 }
 
-.angular-google-map-container { 
-	height: 200px; 
+.light {
+	font-weight: 200;
 }
+
+.bold-red {
+	font-weight: 800;
+	color: $crimson;
+}
+
+.crimson {
+	color: #f62b3;
+}
+
+.angular-google-map-container { 
+	margin-top: 15px;
+	height: 215px; 
+	border: 1px solid $lightslate;
+}
+
+.instagram-border {
+	border: 1px solid $lightslate;
+}
+
+.navbar > .container-fluid .navbar-brand {
+	font-weight: 800;
+	color: $crimson;
+	font-size: 40px;
+	text-transform: uppercase;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: $crimson;
+}
+
+.navbar-right {
+	margin-right: 25px;
+}
+
+#nprogress .spinner {
+  display: block;
+  position: fixed;
+  z-index: 1031;
+  top: 28px;
+  left: 742px;
+}
+
+#nprogress .bar {
+  background: $crimson;
+
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+}
+
+#nprogress .spinner-icon {
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+
+  border: solid 2px transparent;
+  border-top-color: $crimson;
+  border-left-color: $crimson;
+  border-radius: 50%;
+
+  -webkit-animation: nprogress-spinner 400ms linear infinite;
+          animation: nprogress-spinner 400ms linear infinite;
+}
+
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px $crimson, 0 0 5px $crimson;
+  opacity: 1.0;
+
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+      -ms-transform: rotate(3deg) translate(0px, -4px);
+          transform: rotate(3deg) translate(0px, -4px);
+}
+
+address {
+	font-size: 15px;
+}
+
+.search-btn {
+	text-align: left;
+	padding: 6px 12px 6px 12px;
+}
+
+.navbar-default {
+	background-color: white;
+	padding-top: 10px;
+}
+
+.navbar {
+	min-height: 75px;
+}
+
+hr {
+	// border-top: 1px solid $lightslate;
+}
+
+.review-box {
+	background-color: $yellow;
+	padding: 15px;
+	font-weight: 800;
+	color: $crimson;
+	text-transform: uppercase;
+}
+
+.review-box h3 {
+
+}
+
+// .animate-enter, .animate-leave {
+// transition: 500ms ease-in all;
+// }
+
+
+// .animate-enter.animate-enter-active {
+// 	opacity: 1;
+// }
+
+
+// .animate-enter {
+// 	-webkit-transition: 10s ease-in all; /* Chrome */
+// 	transition: 10s ease-in all;
+// 	opacity: 0;
+// }
+ 
+// .animate-enter.animate-enter-active {
+// 	opacity: 1;
+// }

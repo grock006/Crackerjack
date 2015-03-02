@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand bold" href="#">CrackerJack</a>
+      <a class="navbar-brand bold-red" href="#">CrackerJack</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,13 +17,13 @@
           <form ng-submit="searchName(name, location)" class="navbar-form navbar-left" role="search">
              <input type="text" class="form-control" ng-model="name" placeholder="Search Restaurants">
              <input type="text" class="form-control" ng-model="location" placeholder="Zipcode or City">       
-             <button type="submit" class="btn btn-default" value="Search">Search</button>
+             <button type="submit" class="btn btn-default search-btn" value="Search">Search  <i class="fa fa-search"></i></button>
             </form>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" class="bold">About</a></li>
-        <li><a href="#" class="bold">Contact</a></li>
+        <li><a href="#" class="bold">ABOUT</a></li>
+        <li><a href="#" class="bold">CONTACT</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

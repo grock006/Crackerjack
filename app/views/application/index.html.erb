@@ -1,5 +1,8 @@
+<div ng-show="reviewresults.length > 0 && imageresults.length > 0" ng-animate="'animate'"> 
 <div class="container-fluid">
 	<div class="row">
+
+	<!-- 	 <autocomplete ng-model="yourchoice" data="movies" on-type="updateMovies"></autocomplete> -->
 
 		<div class="col-md-6">       
 			<ui-gmap-google-map center='map.center' zoom='map.zoom'>
@@ -8,58 +11,82 @@
 			</ui-gmap-google-map>
 		</div>
 
-		<div class="col-md-6">     
-			<h3 class="bold">{{yelpresults[0]["hash"].name}}<h3>
-				{{yelpresults[0]["hash"].categories[0][0]}}
-			<address>
-				{{yelpresults[0]["hash"].location.display_address[0]}}
-				{{yelpresults[0]["hash"].location.neighborhoods[0]}}<br>
-				{{yelpresults[0]["hash"].location.city}}, {{yelpresults[0]["hash"].location.state_code}}<br>
-				{{yelpresults[0]["hash"].location.postal_code}}<br>
-				{{yelpresults[0]["hash"].display_phone}}<br>
-			</address>
+		<div class="col-md-6"> 
+
+			<div class="row">    
+				<div class="col-md-6">
+					<h3 class="bold">{{yelpresults[0]["hash"].name | uppercase}}<h3>
+					<address>
+						{{yelpresults[0]["hash"].location.display_address[0]}}
+						{{yelpresults[0]["hash"].location.neighborhoods[0]}}<br>
+						{{yelpresults[0]["hash"].location.city}}, {{yelpresults[0]["hash"].location.state_code}}<br>
+						{{yelpresults[0]["hash"].location.postal_code}}<br>
+						<span class="bold">{{yelpresults[0]["hash"].display_phone}}</span>
+					</address>
+					<span class="light">{{yelpresults[0]["hash"].categories[0][0]}}</span>
+				 </div>
+				 <div class="col-md-6">
+				 	<div class="review-box">
+				 	<h3><span class="bold-red">{{reviewresults.length}}</span> Reviews</h3>
+						<h3>Critic Rating: <span class="bold-red">{{totalAverage}}</span>
+						<div ng-show="totalAverage > 85">
+							<span class="fa-stack fa-lg">
+							  <i class="fa fa-circle fa-stack-2x"></i>
+							  <i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
+							</span>
+					    </div>
+					    <div ng-show="totalAverage < 85">
+							<span class="fa-stack fa-lg">
+							  <i class="fa fa-circle fa-stack-2x"></i>
+							  <i class="fa fa-thumbs-down fa-stack-1x fa-inverse"></i>
+							</span>
+					    </div>
+						</h3>
+					</div>
+				 </div>
+			</div>
 		</div>
 
 	</div>
 
+	<br>
 	<hr>
+	<br>
 
 	<div class="row">
 		
 		<div class="col-md-6">  
-			<div ng-repeat="x in imageresults" style="width:150px">
-			<a href="{{x.link}}"><img src="{{x.images.low_resolution.url }}"></a>
+			<div class="instagram-border">
+				<div ng-repeat="x in imageresults" style="width:300px;display:inline-block" ng-animate="'animate'">
+				<a href="{{x.link}}" target="_blank"><img src="{{x.images.low_resolution.url }}"></a>
+				</div>
 			</div>
 		</div>	
 
 
 		<div class="col-md-6"> 
-			
-				 <div ng-show="reviewresults.length > 0">
 						
-						<h3>{{reviewresults.length}} Reviews</h3>
-						<h3>Critic Rating: {{totalAverage}}%</h3>
-
-			     <h1 class="bold">Reviews</h1>
+			     <h1 class="bold-red">Reviews</h1>
 
 				<div ng-repeat="x in reviewresults track by $index">
 					<h2 class="bold">{{x.domain.replace("www.", "").replace(".com", "") | uppercase }}</h2>	
-					<h2>{{x.title}}</h2>
+					<h2><em>{{x.title}}</em></h2>
+					<p>{{x.date_published | date: "fullDate" }}</p>
 					<p>{{x.docSentiment["contentExcerpt"]}}<p>
-					<a href="{{x.url}}">Full Review</a><br>
-					{{x.author}}<br>
+					<a href="{{x.url}}" target="_blank">Full Review</a><br>
+					<em>{{x.author}}</em>
 						<div ng-show="x.docSentiment['score'] != null">
-							Score: {{x.docSentiment["score"] | number:0}} {{x.docSentiment["type"] | uppercase}}<br>
+							<span class="bold">Score:</span> {{x.docSentiment["score"] | number:0}} {{x.docSentiment["type"] | uppercase}}<br>
 						</div>
+						<p><span class="bold">Keywords:</span> {{x.docSentiment["keywords"][1].text}}, {{x.docSentiment["keywords"][2].text}}, {{x.docSentiment["keywords"][3].text}}, {{x.docSentiment["keywords"][4].text}}, {{x.docSentiment["keywords"][5].text}}, {{x.docSentiment["keywords"][6].text}}</p>
 					<br>
 					<br>
 				</div>
-			 <!-- end ng-show  -->
-			 </div>
 		
 	     </div>
 	<!-- End Row -->
 	</div>
 
 <!-- End Container -->
+</div>
 </div>

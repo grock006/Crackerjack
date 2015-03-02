@@ -1,4 +1,4 @@
-var app = angular.module("myApp",['ngResource', 'uiGmapgoogle-maps']);
+var app = angular.module("myApp",['ngResource', 'uiGmapgoogle-maps', 'nprogress-rails', 'autocomplete']);
 
 //configuration 
 app.config(['$httpProvider',
@@ -6,4 +6,11 @@ app.config(['$httpProvider',
       // send security token to rails with every angular http request
       $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
 }]);  // .config
+
+
+NProgress.configure({
+  showSpinner: true,
+  ease: 'ease',
+  speed: 700
+});
 
