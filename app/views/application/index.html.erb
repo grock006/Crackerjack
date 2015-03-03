@@ -19,7 +19,7 @@
 						{{details.address_components[0].long_name}} {{details.address_components[1].long_name}}<br>
 						{{details.address_components[2].long_name}}, {{details.address_components[3].short_name}} {{details.address_components[5].long_name}}<br>
 						<span class="bold">{{details.formatted_phone_number}}</span><br>						
-					    <a href="{{details.website}}">Website</a>
+					    <a href="{{details.website}}">{{details.name}} Website</a>
 					</address>
 					<div class="small-font">
 					{{details.opening_hours.weekday_text[0]}}<br>
@@ -65,11 +65,9 @@
 	<div class="row">
 		
 		<div class="col-md-5">  
-			<div class="instagram-border">
-				<div ng-repeat="x in imageresults" style="width:300px;display:inline-block" ng-animate="'animate'">
-				<a href="{{x.link}}" target="_blank"><img src="{{x.images.low_resolution.url }}"></a>
+				<div ng-repeat="x in imageresults" style="display:inline-block" ng-animate="'animate'">
+				<a href="{{x.link}}" target="_blank"><img src="{{x.images.low_resolution.url }}" style="width:160px; padding: 5px;"></a>
 				</div>
-			</div>
 		</div>	
 
 
@@ -119,19 +117,19 @@
 					    </div>
 					    <div role="tabpanel" class="tab-pane fade" id="messages">
 					    	<br>
-					    	<p>	{{google.reviews[0].author_name}}<br>
+					    	<p><em>{{google.reviews[0].author_name}}</em><br>
 					    	{{google.reviews[0].text}}<br>
 					    	Rating: {{google.reviews[0].rating}}</p>
 					    	<br>
-					    	<p>{{google.reviews[1].author_name}}<br>
+					    	<p><em>{{google.reviews[1].author_name}}</em><br>
 					    	{{google.reviews[1].text}}<br>
 					    	Rating: {{google.reviews[1].rating}}</p>
 					    	<br>
-					    	<p>{{google.reviews[2].author_name}}<br>
+					    	<p><em>{{google.reviews[2].author_name}}</em><br>
 					    	{{google.reviews[2].text}}<br>
 					    	Rating: {{google.reviews[2].rating}}</p>
 					    	<br>
-					    	<p>{{google.reviews[3].author_name}}<br>
+					    	<p><em>{{google.reviews[3].author_name}}</em><br>
 					    	{{google.reviews[3].text}}<br>
 					    	Rating: {{google.reviews[3].rating}}</p>
 					    </div>
@@ -145,8 +143,9 @@
 						     				<input type="text" ng-model="newReview.restaurant" class="form-control" name="{{details.name}}" ng-value="details.name" ng-model="details.name" style="display:none">
 						                  	  <input type="text" ng-model="newReview.name" class="form-control" placeholder="Name"><br>
 						                       <input type="text" ng-model="newReview.title"class="form-control" placeholder="Title"><br>
-						                       <input type="text" ng-model="newReview.content" class="form-control" placeholder="Content"><br>
-						                       <input type="text" ng-model="newReview.score" class="form-control" placeholder="Score"><br>
+						                       <textarea type="text" ng-model="newReview.content" class="form-control" placeholder="Content"></textarea>
+						                       	<br>
+						                       <input type="text" ng-model="newReview.score" class="form-control" rows="3" placeholder="Score"><br>
 						                      <button class="btn btn-default">Submit</button>
 						                   </form>
 						            </div>

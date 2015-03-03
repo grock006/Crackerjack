@@ -5,9 +5,15 @@ $lightslate: #7c7c98;
 $cadetblue: #5d908c;
 $lightgray: #e7e7e7;
 
-body {
+html, body {
 	font-family: 'Raleway', sans-serif;
+  height: 100%;
 }
+
+a {
+  color: $cadetblue;
+}
+
 .bold {
 	font-weight: 800;
 }
@@ -36,6 +42,7 @@ body {
 }
 
 .instagram-border {
+  width: 100%;
 	border: 1px solid $lightslate;
 }
 
