@@ -9,7 +9,13 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
       types: '(cities)'
     };
 
+    $scope.details = ""
+    $scope.details2 = ""
+
    $scope.searchName = function(name, location){
+
+    name = $scope.details.name
+    location = $scope.details.address_components[2].long_name
 
     var images = ImageResource(name, location);
 

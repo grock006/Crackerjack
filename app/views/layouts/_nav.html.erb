@@ -14,11 +14,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-          <form ng-submit="searchName(name, location)" class="navbar-form navbar-left" role="search">
-              <input type="text"  ng-autocomplete ng-model="name" options="options1" details="details" class="form-control" placeholder="Search Restaurants"/>
-              <input type="text"  ng-autocomplete ng-model="location" options="options2" details="details2" class="form-control" placeholder="Enter Zipcode or City"/>   
-        <!--      <input type="text" class="form-control" ng-model="name" placeholder="Search Restaurants">
-             <input type="text" class="form-control" ng-model="location" placeholder="Zipcode or City">    -->    
+          <form ng-submit="searchName()" class="navbar-form navbar-left" role="search">
+              <input type="text"  ng-autocomplete ng-model="name" options="options1" details="details" class="form-control" placeholder="Search by Restaurant for Food Critic Reviews"/>   
              <button type="submit" class="btn btn-default search-btn" value="Search">Search  <i class="fa fa-search"></i></button>
             </form>
       </ul>
@@ -30,16 +27,3 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<!-- {{details.address_components}}
-{{details.adr_address}}
-{{details.icon}}
-{{details.opening_hours.weekday_text}}
-{{details.website}} -->
-{{details.rating}}
-<!-- <h1>Name:{{details.name}}</h1>
-<h2>Full Address {{details.adr_address}}</h2>
-<h2>Area Code: {{details.address_components[5].long_name}}</h2>
-<br>
-<br>
-<br>
-{{details}} -->

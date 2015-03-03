@@ -13,22 +13,31 @@
 
 			<div class="row">    
 				<div class="col-md-6">
-					<h3 class="bold">{{yelpresults[0]["hash"].name | uppercase}}<h3>
+					<h3 class="bold">{{details.name | uppercase}} - <span class="light">{{yelpresults[0]["hash"].location.neighborhoods[0]}}</span><h3>
+						<span class="light small-font">{{yelpresults[0]["hash"].categories[0][0]}}</span>
 					<address>
-						{{yelpresults[0]["hash"].location.display_address[0]}}
-						{{yelpresults[0]["hash"].location.neighborhoods[0]}}<br>
-						{{yelpresults[0]["hash"].location.city}}, {{yelpresults[0]["hash"].location.state_code}}<br>
-						{{yelpresults[0]["hash"].location.postal_code}}<br>
-						<span class="bold">{{yelpresults[0]["hash"].display_phone}}</span>
+						{{details.address_components[0].long_name}} {{details.address_components[1].long_name}}<br>
+						{{details.address_components[2].long_name}}, {{details.address_components[3].short_name}}<br>
+						{{details.address_components[5].long_name}}<br>
+						<span class="bold">{{details.formatted_phone_number}}</span>						
+					    <a href="{{details.website}}">Website</a>
 					</address>
-					<span class="light">{{yelpresults[0]["hash"].categories[0][0]}}</span>
+					<div class="small-font">
+					{{details.opening_hours.weekday_text[0]}}<br>
+						{{details.opening_hours.weekday_text[1]}}<br>
+							{{details.opening_hours.weekday_text[2]}}<br>
+								{{details.opening_hours.weekday_text[3]}}<br>
+									{{details.opening_hours.weekday_text[4]}}<br>
+										{{details.opening_hours.weekday_text[5]}}<br>
+											{{details.opening_hours.weekday_text[6]}}<br>
+										</div>
 				 </div>
 				 <div class="col-md-6">
 				 	<div class="review-box">
 				 	<h3><span class="bold-red">{{reviewresults.length}}</span> Reviews</h3>
 						<h3>Critic Rating: <span class="bold-red">{{totalAverage}}</span></h3>
 						<h3>Yelp Rating: <span class="bold-red">{{yelpresults[0]["hash"].rating}}</span></h3>
-						<h3>Google Places Rating: <span class="bold-red"></span></h3>
+						<h3>Google Places Rating: <span class="bold-red">{{details.rating}}</span></h3>
 
 						<div ng-show="totalAverage > 85">
 							<span class="fa-stack fa-lg">
