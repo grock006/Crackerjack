@@ -1,5 +1,7 @@
 app.controller("reviewController",function($scope, $resource, Review){
 
+    $scope.submitMessage = null
+
     Review.query(function(data){
     $scope.userReviews = data
   });
@@ -11,22 +13,13 @@ app.controller("reviewController",function($scope, $resource, Review){
         title: $scope.newReview.title,
         content: $scope.newReview.content,
         score: $scope.newReview.score,
-        restaurant: $scope.newReview.restaurant
+        restaurant: $scope.details.name
       }
     ).$save(function(data){
       console.log(data);
        $scope.newReview = null
+       $scope.submitMessage = "Thanks For Your Review, Crackerjacker!"
     });
   };
 }); 
 
-
- // $scope.createPost = function() {
- //    new Post({
- //      title: $scope.newPost.title,
- //      link: $scope.newPost.link
- //    }).$save(function(data){
- //      $scope.posts.unshift(data);
- //      $scope.newPost = null
- //    });
- //  }
