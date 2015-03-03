@@ -75,8 +75,58 @@
 
 
 		<div class="col-md-6"> 
+
+				<div role="tabpanel">
+
+					  <!-- Nav tabs -->
+					 <ul class="nav nav-tabs" role="tablist">
+					  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><h3 class="bold-red">Critic Reviews</h3></a></li>
+					    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><h3 class="bold-red">User Reviews</h3></a></li>
+					    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><h3 class="bold-red">Google Reviews</h3></a></li>
+					 </ul>
+
+					  <!-- Tab panes -->
+					  <div class="tab-content">
+					    <div role="tabpanel" class="tab-pane fade in active" id="home">
+					    		<div ng-repeat="x in reviewresults track by $index">
+									<h2 class="bold">{{x.domain.replace("www.", "").replace(".com", "") | uppercase }}</h2>	
+									<h2><em>{{x.title}}</em></h2>
+									<p>{{x.date_published | date: "fullDate" }}</p>
+									<p>{{x.docSentiment["contentExcerpt"]}}<p>
+									<a href="{{x.url}}" target="_blank">Full Review</a><br>
+									<em>{{x.author}}</em>
+										<div ng-show="x.docSentiment['score'] != null">
+											<span class="bold">Score:</span> {{x.docSentiment["score"] | number:0}} {{x.docSentiment["type"] | uppercase}}<br>
+										</div>
+										<p><span class="bold">Keywords:</span> {{x.docSentiment["keywords"][1].text}}, {{x.docSentiment["keywords"][2].text}}, {{x.docSentiment["keywords"][3].text}}, {{x.docSentiment["keywords"][4].text}}, {{x.docSentiment["keywords"][5].text}}, {{x.docSentiment["keywords"][6].text}}</p>
+									<br>
+									<br>
+								</div>
+					    </div>
+					    <div role="tabpanel" class="tab-pane fade" id="profile"></div>
+					    <div role="tabpanel" class="tab-pane fade" id="messages">
+					    	<br>
+					    	<p>	{{google.reviews[0].author_name}}<br>
+					    	{{google.reviews[0].text}}<br>
+					    	Rating: {{google.reviews[0].rating}}</p>
+					    	<br>
+					    	<p>{{google.reviews[1].author_name}}<br>
+					    	{{google.reviews[1].text}}<br>
+					    	Rating: {{google.reviews[1].rating}}</p>
+					    	<br>
+					    	<p>{{google.reviews[2].author_name}}<br>
+					    	{{google.reviews[2].text}}<br>
+					    	Rating: {{google.reviews[2].rating}}</p>
+					    	<br>
+					    	<p>{{google.reviews[3].author_name}}<br>
+					    	{{google.reviews[3].text}}<br>
+					    	Rating: {{google.reviews[3].rating}}</p>
+					    </div>
+					  </div>
+
+					</div>
 						
-			     <h1 class="bold-red">Critic Reviews</h1>
+		<!-- 	     <h1 class="bold-red">Critic Reviews</h1>
 
 				<div ng-repeat="x in reviewresults track by $index">
 					<h2 class="bold">{{x.domain.replace("www.", "").replace(".com", "") | uppercase }}</h2>	
@@ -91,7 +141,7 @@
 						<p><span class="bold">Keywords:</span> {{x.docSentiment["keywords"][1].text}}, {{x.docSentiment["keywords"][2].text}}, {{x.docSentiment["keywords"][3].text}}, {{x.docSentiment["keywords"][4].text}}, {{x.docSentiment["keywords"][5].text}}, {{x.docSentiment["keywords"][6].text}}</p>
 					<br>
 					<br>
-				</div>
+				</div> -->
 		
 	     </div>
 	<!-- End Row -->
