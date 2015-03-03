@@ -2,8 +2,6 @@
 <div class="container-fluid">
 	<div class="row">
 
-	<!-- 	 <autocomplete ng-model="yourchoice" data="movies" on-type="updateMovies"></autocomplete> -->
-
 		<div class="col-md-6">       
 			<ui-gmap-google-map center='map.center' zoom='map.zoom'>
 				 <ui-gmap-marker coords="marker.coords" idkey="marker.id">
@@ -28,7 +26,10 @@
 				 <div class="col-md-6">
 				 	<div class="review-box">
 				 	<h3><span class="bold-red">{{reviewresults.length}}</span> Reviews</h3>
-						<h3>Critic Rating: <span class="bold-red">{{totalAverage}}</span>
+						<h3>Critic Rating: <span class="bold-red">{{totalAverage}}</span></h3>
+						<h3>Yelp Rating: <span class="bold-red">{{yelpresults[0]["hash"].rating}}</span></h3>
+						<h3>Google Places Rating: <span class="bold-red"></span></h3>
+
 						<div ng-show="totalAverage > 85">
 							<span class="fa-stack fa-lg">
 							  <i class="fa fa-circle fa-stack-2x"></i>
@@ -41,7 +42,7 @@
 							  <i class="fa fa-thumbs-down fa-stack-1x fa-inverse"></i>
 							</span>
 					    </div>
-						</h3>
+					
 					</div>
 				 </div>
 			</div>
@@ -66,7 +67,7 @@
 
 		<div class="col-md-6"> 
 						
-			     <h1 class="bold-red">Reviews</h1>
+			     <h1 class="bold-red">Critic Reviews</h1>
 
 				<div ng-repeat="x in reviewresults track by $index">
 					<h2 class="bold">{{x.domain.replace("www.", "").replace(".com", "") | uppercase }}</h2>	

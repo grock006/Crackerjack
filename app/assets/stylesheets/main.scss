@@ -132,6 +132,24 @@ hr {
 
 }
 
+.pac-container {
+    font-family: 'Raleway', sans-serif;
+}
+
+.pac-icon {
+  display: none;
+}
+
+.pac-item {
+    font-size: 14px;
+    color: #555555;
+}
+
+.navbar-form .form-control {
+    width: 250px;
+}
+
+
 // .animate-enter, .animate-leave {
 // transition: 500ms ease-in all;
 // }

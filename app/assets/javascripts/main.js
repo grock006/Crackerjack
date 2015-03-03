@@ -1,4 +1,4 @@
-var app = angular.module("myApp",['ngResource', 'uiGmapgoogle-maps', 'nprogress-rails', 'autocomplete']);
+var app = angular.module("myApp",['ngResource', 'uiGmapgoogle-maps', 'nprogress-rails', 'ngAutocomplete']);
 
 //configuration 
 app.config(['$httpProvider',

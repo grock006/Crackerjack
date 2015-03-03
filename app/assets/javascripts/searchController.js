@@ -1,39 +1,13 @@
 app.controller("searchController",function($scope, ImageResource, ReviewResource, YelpResource){
 
-      $scope.movies = ["Lord of the Rings",
-                        "Drive",
-                        "Science of Sleep",
-                        "Back to the Future",
-                        "Oldboy"];
+  $scope.options1 = {
+      types: 'establishment'
+    };
 
-        // gives another movie array on change
-        $scope.updateMovies = function(typed){
-            // MovieRetriever could be some service returning a promise
-            $scope.newmovies = MovieRetriever.getmovies(typed);
-
-
-              var url = 'http://api.yelp.com/v2/search';
-              var params = {
-                                callback: 'angular.callbacks._0',
-                                location: 'San+Francisc',
-                                oauth_consumer_key: "Xnvaip0-eY6FzwXXgS-Ctw",
-                                oauth_token: "bSIXuYiiYZWLx7cPiYfQQYB5LCP49ps8",
-                                oauth_signature_method: "HMAC-SHA1",
-                                oauth_timestamp: new Date().getTime(),
-                                oauth_nonce: randomString(32, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'),
-                                term: 'food'
-                            };
-
-              $http.get(url, {params: params}).success(function(data){
-                    $scope.results = data;
-                    console.log(data)
-                  });
-
-            $scope.newmovies.then(function(data){
-              $scope.movies = data;
-            });
-        }
-
+     $scope.options2 = {
+      country: 'usa',
+      types: '(cities)'
+    };
 
    $scope.searchName = function(name, location){
 
