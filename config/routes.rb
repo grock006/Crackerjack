@@ -7,4 +7,9 @@ Rails.application.routes.draw do
         get "/review" => "searches#review"
         get "/results" => "searches#yelp"
     end
+
+    namespace :api do
+    resources :reviews
+  end
+
 end

@@ -17,9 +17,8 @@
 						<span class="light small-font">{{yelpresults[0]["hash"].categories[0][0]}}</span>
 					<address>
 						{{details.address_components[0].long_name}} {{details.address_components[1].long_name}}<br>
-						{{details.address_components[2].long_name}}, {{details.address_components[3].short_name}}<br>
-						{{details.address_components[5].long_name}}<br>
-						<span class="bold">{{details.formatted_phone_number}}</span>						
+						{{details.address_components[2].long_name}}, {{details.address_components[3].short_name}} {{details.address_components[5].long_name}}<br>
+						<span class="bold">{{details.formatted_phone_number}}</span><br>						
 					    <a href="{{details.website}}">Website</a>
 					</address>
 					<div class="small-font">
@@ -83,6 +82,7 @@
 					  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><h3 class="bold-red">Critic Reviews</h3></a></li>
 					    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><h3 class="bold-red">User Reviews</h3></a></li>
 					    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><h3 class="bold-red">Google Reviews</h3></a></li>
+					     <li role="presentation"><a href="#add" aria-controls="add" role="tab" data-toggle="tab"><h3 class="bold-red">+</h3></a></li>
 					 </ul>
 
 					  <!-- Tab panes -->
@@ -103,7 +103,14 @@
 									<br>
 								</div>
 					    </div>
-					    <div role="tabpanel" class="tab-pane fade" id="profile"></div>
+					    <div role="tabpanel" class="tab-pane fade" id="profile">
+					    	<div ng-repeat="x in userReviews">
+					    		{{x.content}}
+					    	</div>
+					    	          
+					    	
+
+					    </div>
 					    <div role="tabpanel" class="tab-pane fade" id="messages">
 					    	<br>
 					    	<p>	{{google.reviews[0].author_name}}<br>
@@ -122,27 +129,25 @@
 					    	{{google.reviews[3].text}}<br>
 					    	Rating: {{google.reviews[3].rating}}</p>
 					    </div>
+
+					     <div role="tabpanel" class="tab-pane fade" id="add">
+					     	<div ng-controller="reviewController">
+						                  <h1>Submit Your Own Review:</h1>
+						                  <form ng-submit="createReview()">
+						     				   <!-- Add Restaurant -->
+						     				 <input type="text" ng-model="newReview.restaurant" class="form-control" placeholder="{{details.name}}" value="{{details.name}}"><br>
+						                  	  <input type="text" ng-model="newReview.name" class="form-control" placeholder="Name"><br>
+						                       <input type="text" ng-model="newReview.title"class="form-control" placeholder="Title"><br>
+						                       <input type="text" ng-model="newReview.content" class="form-control" placeholder="Content"><br>
+						                       <input type="text" ng-model="newReview.score" class="form-control" placeholder="Score"><br>
+						                      <button class="btn btn-default">Submit</button>
+						                   </form>
+						            </div>
+					     </div>
 					  </div>
 
 					</div>
-						
-		<!-- 	     <h1 class="bold-red">Critic Reviews</h1>
-
-				<div ng-repeat="x in reviewresults track by $index">
-					<h2 class="bold">{{x.domain.replace("www.", "").replace(".com", "") | uppercase }}</h2>	
-					<h2><em>{{x.title}}</em></h2>
-					<p>{{x.date_published | date: "fullDate" }}</p>
-					<p>{{x.docSentiment["contentExcerpt"]}}<p>
-					<a href="{{x.url}}" target="_blank">Full Review</a><br>
-					<em>{{x.author}}</em>
-						<div ng-show="x.docSentiment['score'] != null">
-							<span class="bold">Score:</span> {{x.docSentiment["score"] | number:0}} {{x.docSentiment["type"] | uppercase}}<br>
-						</div>
-						<p><span class="bold">Keywords:</span> {{x.docSentiment["keywords"][1].text}}, {{x.docSentiment["keywords"][2].text}}, {{x.docSentiment["keywords"][3].text}}, {{x.docSentiment["keywords"][4].text}}, {{x.docSentiment["keywords"][5].text}}, {{x.docSentiment["keywords"][6].text}}</p>
-					<br>
-					<br>
-				</div> -->
-		
+								
 	     </div>
 	<!-- End Row -->
 	</div>

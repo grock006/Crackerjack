@@ -10,12 +10,11 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
     };
 
     $scope.details = ""
-    // $scope.details2 = ""
 
    $scope.searchName = function(name, location){
 
     name = $scope.details.name
-    location = $scope.details.address_components[2].long_name
+    location = $scope.details.address_components[2].long_name + " " + $scope.details.address_components[3].short_name
     $scope.google = $scope.details
 
     var images = ImageResource(name, location);
