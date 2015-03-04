@@ -3,10 +3,31 @@
 	<div class="row">
 
 		<div class="col-md-5">       
+		<div class="row">	
+			<div class="col-md-6">
+
 			<ui-gmap-google-map center='map.center' zoom='map.zoom'>
 				 <ui-gmap-marker coords="marker.coords" idkey="marker.id">
 				 </ui-gmap-marker>
 			</ui-gmap-google-map>
+			</div>
+			<div class="col-md-6">
+				<img src="{{main_image_url}}" style="width:100%; margin-top:15px;">
+			</div>
+		</div>
+
+		<br>
+		<br>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div ng-repeat="x in imageresults" style="display:inline-block" ng-animate="'animate'">
+				<a href="{{x.link}}" target="_blank" ng-mouseover="makeLarge(x.images.low_resolution.url)"><img src="{{x.images.low_resolution.url }}" style="width:85px;padding: 2px;"></a>
+				</div>
+			</div>
+		</div>
+
+
 		</div>
 
 		<div class="col-md-7"> 
@@ -43,7 +64,7 @@
 						<h3>Critic Rating: <span class="bold-red">{{rating | number:1}}</span>/5</h3>
 
 						<span ng-show="rating > 3">
-							<h4>
+							<h4 class="bold-red">
 								Crackerjack Approved! <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
 							</span>
 							</h4>
@@ -59,9 +80,9 @@
 					    </span>
 
 					
-						<h3><i class="fa fa-yelp"></i> Yelp Rating: <span class="bold-red">{{yelpresults[0]["hash"].rating}}</span>/5</h3>
-						<h3><i class="fa fa-google"></i> Google Rating: <span class="bold-red">{{details.rating}}</span>/5</h3>
-						<h3>User Rating: </h3>
+						<h4><i class="fa fa-yelp"></i> Yelp Rating: <span class="bold-red">{{yelpresults[0]["hash"].rating}}</span>/5</h4>
+						<h4><i class="fa fa-google"></i> Google Rating: <span class="bold-red">{{details.rating}}</span>/5</h4>
+						<h4>User Rating: </h4>
 						
 				
 					
@@ -82,7 +103,7 @@
 		
 		<div class="col-md-5">  
 				<div ng-repeat="x in imageresults" style="display:inline-block" ng-animate="'animate'">
-				<a href="{{x.link}}" target="_blank" ng-mouseover="makeLarge()" ng-mouseleave="makeSmall()"><img src="{{x.images.low_resolution.url }}" ng-class="image"></a>{{$index}}
+				<a href="{{x.link}}" target="_blank" ng-mouseover="makeLarge(x.images.low_resolution.url)" ng-mouseleave="makeSmall()"><img src="{{x.images.low_resolution.url }}" ng-class="image"></a>
 				</div>
 		</div>	
 

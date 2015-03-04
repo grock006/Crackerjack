@@ -1,14 +1,14 @@
 app.controller("searchController",function($scope, ImageResource, ReviewResource, YelpResource){
 
-  
     $scope.image = "instagram"
 
-    $scope.makeLarge = function(idx){
-        $scope.image.idx = "highlight"
+    $scope.makeLarge = function(url){
+        // $scope.image.idx = "highlight"
+        $scope.main_image_url = url
     }
 
     $scope.makeSmall = function(idx){
-        $scope.image.idx = "instagram"
+        // $scope.image.idx = "instagram"
     }
 
   $scope.options1 = {
@@ -34,6 +34,7 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
     $scope.imageresults = images.search();
     $scope.imageresults.$promise.then(function(data) {
     $scope.imageresults = data;
+    $scope.main_image_url = data[0].images.low_resolution.url
     });
 
     var reviews = ReviewResource(name, location);

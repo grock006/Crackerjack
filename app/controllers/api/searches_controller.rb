@@ -18,9 +18,9 @@ module Api
         @images = @client.media_search(@lat, @lng, distance: 1)
 
         if @images == true
-          @images = @client.media_search(@lat, @lng, distance: 1).take(9)
+          @images = @client.media_search(@lat, @lng, distance: 1).take(12)
         else
-          @images = @client.media_search(@lat, @lng, distance: 5).take(9)
+          @images = @client.media_search(@lat, @lng, distance: 5).take(12)
         end 
         
         render json: @images
@@ -153,10 +153,12 @@ module Api
               @postive_total = 0
               @negative_total = 0
               @sentiment_results.each do |x|
-                if x['docSentiment']['score'].to_f * 100 + 50 > 50 && (x['docSentiment']['type'] == "positive" || x['docSentiment']['type'] == "neutral" || x['docSentiment']['type'] == nil)
-                  @postive_total += 1
-                else
-                  @negative_total += 1  
+                if x['docSentiment'] && x['docSentiment']['score'] 
+                  if x['docSentiment']['score'].to_f * 100 + 50 > 50 && (x['docSentiment']['type'] == "positive" || x['docSentiment']['type'] == "neutral" || x['docSentiment']['type'] == nil)
+                    @postive_total += 1
+                  else
+                    @negative_total += 1  
+                  end                                    
                 end
               end
 
