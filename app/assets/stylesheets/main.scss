@@ -37,7 +37,7 @@ a {
 
 .angular-google-map-container { 
 	margin-top: 15px;
-	height: 255px; 
+	height: 212px; 
 	border: 1px solid $lightslate;
 }
 
@@ -180,6 +180,46 @@ hr {
   padding: 5px;
 }
 
+
+// .background-times-square {
+//     background-image: url("times_square.jpg");
+//     background-size: cover;
+//     height: 100%;
+//     background-repeat: no-repeat;
+// }
+
+.background-image-main {
+    margin-top: -20px;
+    background-image: url("main_two.jpg");
+    background-size: cover;
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+
+.dark-background {
+    background-color: rgba(0,0,0,0.5);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+}
+
+footer {
+  margin: 100px;
+  min-height: 500px;
+}
+
+.form-control {
+  width: 75%
+}
+
+.btn-default {
+  color: white;
+  background-color: $crimson;
+  border-color: none;
+  font-weight: 800;
+}
 
 // .animate-enter, .animate-leave {
 // transition: 500ms ease-in all;

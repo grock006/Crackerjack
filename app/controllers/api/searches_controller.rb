@@ -18,9 +18,9 @@ module Api
         @images = @client.media_search(@lat, @lng, distance: 1)
 
         if @images == true
-          @images = @client.media_search(@lat, @lng, distance: 1).take(12)
+          @images = @client.media_search(@lat, @lng, distance: 1).take(5)
         else
-          @images = @client.media_search(@lat, @lng, distance: 5).take(12)
+          @images = @client.media_search(@lat, @lng, distance: 5).take(5)
         end 
         
         render json: @images
