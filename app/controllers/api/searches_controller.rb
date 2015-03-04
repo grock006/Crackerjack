@@ -41,7 +41,7 @@ module Api
         # add address params, enter any address and convert into zip code
         # Need to add zipcode and/or adddress into search params below
         # restaurant review results
-        page = open "http://www.google.com/search?q=restaurant+review+food+#{@name}+{@location}"
+        page = open "http://www.google.com/search?q=restaurant+review+food+#{@name}+#{@location}"
         @html = Nokogiri::HTML page
 
         # blog review results
