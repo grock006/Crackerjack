@@ -23,3 +23,7 @@
 //= require underscore
 //= require main
 //= require_tree .
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})

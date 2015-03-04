@@ -3,7 +3,7 @@
 	<div class="row">
 
 		<div class="col-md-5">       
-		<div class="row">	
+		<div class="row" style="margin-bottom: -25px">	
 			<div class="col-md-6">
 
 			<ui-gmap-google-map center='map.center' zoom='map.zoom'>
@@ -22,7 +22,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div ng-repeat="x in imageresults" style="display:inline-block" ng-animate="'animate'">
-				<a href="{{x.link}}" target="_blank" ng-mouseover="makeLarge(x.images.low_resolution.url)"><img src="{{x.images.low_resolution.url }}" style="width:85px;padding: 2px;"></a>
+				<a href="{{x.link}}" target="_blank" ng-mouseover="makeLarge(x.images.low_resolution.url)"><img src="{{x.images.low_resolution.url }}" class="instagram-small"></a>
 				</div>
 			</div>
 		</div>
@@ -61,7 +61,7 @@
 				 	<div class="review-box">
 				 	<h3><span class="bold-red">{{reviewresults.length}}</span> Reviews Counted</h3>
 				 		<p>Positive: {{positiveReviews}}  Negative: {{negativeReviews}}</p>
-						<h3>Critic Rating: <span class="bold-red">{{rating | number:1}}</span>/5</h3>
+						<h3>Critic Rating: <span class="bold-red">{{rating | number:1}}</span>/5  <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Crackerjackometer adds the total number of professional critic reviews gathered by our search. It divides that total by the number of reviews with scores over 50 points that have been deemed positive by the Alchemy Sentiment Analysis API."></i></h3>
 
 						<span ng-show="rating > 3">
 							<h4 class="bold-red">
@@ -125,7 +125,7 @@
 					    		<div class="col-md-10">
 
 					    		<div ng-repeat="x in reviewresults track by $index">
-									<h2 class="bold">{{x.domain.replace("www.", "").replace(".com", "") | uppercase }}</h2>	
+									<h2 class="bold-red">{{x.domain.replace("www.", "").replace(".com", "") | uppercase }}</h2>	
 									<h2><em>{{x.title}}</em></h2>
 									<p>{{x.date_published | date: "fullDate" }}</p>
 									<p>{{x.docSentiment["contentExcerpt"]}}<p>
@@ -173,21 +173,21 @@
 					       <div class="row">
 					    	<div class="col-md-1"></div>	
 					    	    <div class="col-md-10">	    	
-							    	<p><em>{{google.reviews[0].author_name}}</em><br>
+							    	<p><em><span class="bold">{{google.reviews[0].author_name}}</span></em><br>
 							    	{{google.reviews[0].text}}<br>
-							    	Rating: {{google.reviews[0].rating}}</p>
+							    	<span class="bold-red">Rating: {{google.reviews[0].rating}}</span></p>
 							    	<br>
-							    	<p><em>{{google.reviews[1].author_name}}</em><br>
+							    	<p><em><span class="bold">{{google.reviews[1].author_name}}</span></em><br>
 							    	{{google.reviews[1].text}}<br>
-							    	Rating: {{google.reviews[1].rating}}</p>
+							    	<span class="bold-red">Rating: {{google.reviews[1].rating}}</span></p>
 							    	<br>
-							    	<p><em>{{google.reviews[2].author_name}}</em><br>
+							    	<p><em><span class="bold">{{google.reviews[2].author_name}}</span></em><br>
 							    	{{google.reviews[2].text}}<br>
-							    	Rating: {{google.reviews[2].rating}}</p>
+							    	<span class="bold-red">Rating: {{google.reviews[2].rating}}</span></p>
 							    	<br>
-							    	<p><em>{{google.reviews[3].author_name}}</em><br>
+							    	<p><em><span class="bold">{{google.reviews[3].author_name}}</span></em><br>
 							    	{{google.reviews[3].text}}<br>
-							    	Rating: {{google.reviews[3].rating}}</p>
+							    	<span class="bold-red">Rating: {{google.reviews[3].rating}}</span></p>
 							    </div>	
 							<div class="col-md-1"></div>						    	
 					    	</div>
