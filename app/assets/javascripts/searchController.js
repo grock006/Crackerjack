@@ -1,5 +1,16 @@
 app.controller("searchController",function($scope, ImageResource, ReviewResource, YelpResource){
 
+  
+    $scope.image = "instagram"
+
+    $scope.makeLarge = function(idx){
+        $scope.image.idx = "highlight"
+    }
+
+    $scope.makeSmall = function(idx){
+        $scope.image.idx = "instagram"
+    }
+
   $scope.options1 = {
       types: 'establishment'
     };
@@ -32,6 +43,10 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
     $scope.reviewresults.$promise.then(function(data) {
     $scope.reviewresults = data;  
     $scope.totalAverage = parseInt(data[0]['docSentiment']['totalAverage']);
+    $scope.positiveReviews = parseInt(data[0]['docSentiment']['pos_total']);
+    $scope.negativeReviews = parseInt(data[0]['docSentiment']['neg_total']);
+    $scope.totalReviews = parseInt(data[0]['docSentiment']['total_review']);
+    $scope.rating = (($scope.positiveReviews / $scope.totalReviews) * 100) / 20
     console.log(data)     
     });
 

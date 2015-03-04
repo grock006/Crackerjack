@@ -141,12 +141,23 @@ module Api
               end
               threads.each { |t| t.join }
 
-               @score_results = []
-               @type_results = []
-
+              # Create array for score results and type results
+              @score_results = []
+              @type_results = []
               @sentiment_results.each do |x|
-                @score_results << x['docSentiment']['score'].to_f * 100 + 60 if x['docSentiment'] && x['docSentiment']['score']
+                @score_results << x['docSentiment']['score'].to_f * 100 + 50 if x['docSentiment'] && x['docSentiment']['score']
                 @type_results << x['docSentiment']['type'] if x['docSentiment'] && x['docSentiment']['type']
+              end
+
+              # 
+              @postive_total = 0
+              @negative_total = 0
+              @sentiment_results.each do |x|
+                if x['docSentiment']['score'].to_f * 100 + 50 > 50 && (x['docSentiment']['type'] == "positive" || x['docSentiment']['type'] == "neutral" || x['docSentiment']['type'] == nil)
+                  @postive_total += 1
+                else
+                  @negative_total += 1  
+                end
               end
 
               # Keywords
@@ -155,12 +166,35 @@ module Api
                 @keywords << x['keywords']
               end
 
+              # Array of all scores
               @scores = []
               @score_results.each do |x|
                  @scores << x.to_i 
               end
 
+              # if scores > 50 then increment by 1
+              # @positive_scores = []
+              # @negative_scores = []
+              # @scores.each do |x|
+              #   if x > 80
+              #     @positive_scores << x
+              #   else
+              #     @negative_scores << x
+              #   end
+              # end
+
+              # # # Crackerjack Score
+              # @postive_total = @positive_scores.count
+              # @negative_total = @negative_scores.count
+             
+
+              # Total Number of URLs and total number of reviews
+            
               @url_count = @url_group.count if @url_group.count > 0 
+            
+               # crackerjack_rating = @positive_scores.count / @url_group.count
+               # @crackerjack_rating = "#{@positive_scores.count} #{@url_group.count}" 
+               # # crackerjack_rating.to_f
 
               @score_total = @scores.inject{|sum,x| sum + x }
 
@@ -170,38 +204,34 @@ module Api
                 @average = ":( Sorry, Not Enough Information to Analyze Reviews"
               end
 
-              # attempt to add content to document results
-              # content = @document_results['content']
-              # @content = Nokogiri::HTML.parse(content).css('p')[2].text
-
               @content = []
               @document_results.each do |x|
                 @content << x['content'] if x['content']
-                # @content << Nokogiri::HTML.parse(@content)
               end 
 
-              @second_content = []
-              @content.each do |x|
-                @second_content << alchemyapi.sentiment('html', x)
-              end 
-
+              # @second_content = []
+              # @content.each do |x|
+              #   @second_content << alchemyapi.sentiment('html', x)
+              # end 
+              nokogiri_threads = []
               @content_results = []
               @content.each do |x|
-                  if Nokogiri::HTML.parse(x).css('p')[2] != nil && Nokogiri::HTML.parse(x).css('p')[3] != nil
-                    @content_results << Nokogiri::HTML.parse(x).css('p')[2].text + Nokogiri::HTML.parse(x).css('p')[3].text
-                    # add another paragraph 
-                  elsif Nokogiri::HTML.parse(x).css('p')[1] != nil && Nokogiri::HTML.parse(x).css('p')[2] != nil
-                    @content_results << Nokogiri::HTML.parse(x).css('p')[1].text + Nokogiri::HTML.parse(x).css('p')[2].text
-                  elsif Nokogiri::HTML.parse(x).css('p')[0] != nil && Nokogiri::HTML.parse(x).css('p')[1] != nil
-                    @content_results << Nokogiri::HTML.parse(x).css('p')[0].text + Nokogiri::HTML.parse(x).css('p')[1].text
-                  elsif Nokogiri::HTML.parse(x).css('p')[0] != nil 
-                    @content_results << Nokogiri::HTML.parse(x).css('p')[0].text
-                  else
-                    @content_results << x 
-                end
+                nokogiri_threads << Thread.new {
+                    if Nokogiri::HTML.parse(x).css('p')[2] != nil && Nokogiri::HTML.parse(x).css('p')[3] != nil
+                      @content_results << Nokogiri::HTML.parse(x).css('p')[2].text + Nokogiri::HTML.parse(x).css('p')[3].text
+                      # add another paragraph 
+                    elsif Nokogiri::HTML.parse(x).css('p')[1] != nil && Nokogiri::HTML.parse(x).css('p')[2] != nil
+                      @content_results << Nokogiri::HTML.parse(x).css('p')[1].text + Nokogiri::HTML.parse(x).css('p')[2].text
+                    elsif Nokogiri::HTML.parse(x).css('p')[0] != nil && Nokogiri::HTML.parse(x).css('p')[1] != nil
+                      @content_results << Nokogiri::HTML.parse(x).css('p')[0].text + Nokogiri::HTML.parse(x).css('p')[1].text
+                    elsif Nokogiri::HTML.parse(x).css('p')[0] != nil 
+                      @content_results << Nokogiri::HTML.parse(x).css('p')[0].text
+                    else
+                      @content_results << x 
+                  end
+                }
               end
-
-
+              nokogiri_threads.each { |t| t.join }
 
               (0...@url_count).each do |i|
                   @document_results[i][:docSentiment] = {
@@ -209,7 +239,10 @@ module Api
                     type: @type_results[i],
                     totalAverage: @average,
                     contentExcerpt: @content_results[i],
-                    keywords: @keywords[i]
+                    keywords: @keywords[i],
+                    total_review: @url_count,
+                    pos_total: @postive_total,
+                    neg_total: @negative_total
                   }
                   # Rails.logger.info(i)
               end
@@ -220,9 +253,7 @@ module Api
 
 
         render json: @document_results
-        # @second_content
-        # @sentiment_results
-        # @document_results
+        # @crackerjack
 
     end
 

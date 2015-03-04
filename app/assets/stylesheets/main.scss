@@ -131,14 +131,22 @@ hr {
 	// border-top: 1px solid $lightslate;
 }
 
+.review-box-container {
+  margin-top: 15px;
+  background-color: $yellow;
+  padding: 20px;
+}
+
 .review-box {
   margin-top: 15px;
 	background-color: $yellow;
-	padding: 15px;
+	padding: 20px;
 	font-weight: 800;
 	color: $crimson;
 	text-transform: uppercase;
   min-height: 315px; 
+  border: 3px solid white;
+  z-index: 5;
 }
 
 .review-box h3 {
@@ -160,6 +168,16 @@ hr {
 
 .navbar-form .form-control {
     width: 450px;
+}
+
+.instagram {
+  width:160px; 
+  padding: 5px;
+}
+
+.highlight {
+  width: 400px;
+  padding: 5px;
 }
 
 

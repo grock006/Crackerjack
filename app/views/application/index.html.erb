@@ -2,18 +2,19 @@
 <div class="container-fluid">
 	<div class="row">
 
-		<div class="col-md-6">       
+		<div class="col-md-5">       
 			<ui-gmap-google-map center='map.center' zoom='map.zoom'>
 				 <ui-gmap-marker coords="marker.coords" idkey="marker.id">
 				 </ui-gmap-marker>
 			</ui-gmap-google-map>
 		</div>
 
-		<div class="col-md-6"> 
+		<div class="col-md-7"> 
 
 			<div class="row">    
-				<div class="col-md-6">
-					<h3 class="bold">{{details.name | uppercase}} - <span class="light">{{yelpresults[0]["hash"].location.neighborhoods[0]}}</span><h3>
+				<div class="col-md-5">
+					<h3 class="bold">{{details.name | uppercase}}<br>
+						<span class="light">{{yelpresults[0]["hash"].location.neighborhoods[0]}}</span><h3>
 						<span class="light small-font">{{yelpresults[0]["hash"].categories[0][0]}}</span>
 					<address>
 						{{details.address_components[0].long_name}} {{details.address_components[1].long_name}}<br>
@@ -21,7 +22,7 @@
 						<span class="bold">{{details.formatted_phone_number}}</span><br>						
 					    <a href="{{details.website}}">{{details.name}} Website</a>
 					</address>
-					<div class="small-font">
+					<div class="small-font light">
 					{{details.opening_hours.weekday_text[0]}}<br>
 						{{details.opening_hours.weekday_text[1]}}<br>
 							{{details.opening_hours.weekday_text[2]}}<br>
@@ -30,28 +31,43 @@
 										{{details.opening_hours.weekday_text[5]}}<br>
 											{{details.opening_hours.weekday_text[6]}}<br>
 										</div>
+										<br>
+										<!-- <p>Keywords:</p> -->
 				 </div>
-				 <div class="col-md-6">
-				 	<div class="review-box">
-				 	<h3><span class="bold-red">{{reviewresults.length}}</span> Reviews</h3>
-						<h3>Critic Rating: <span class="bold-red">{{totalAverage}}</span></h3>
-						<h3>Yelp Rating: <span class="bold-red">{{yelpresults[0]["hash"].rating}}</span></h3>
-						<h3>Google Places Rating: <span class="bold-red">{{details.rating}}</span></h3>
 
-						<div ng-show="totalAverage > 85">
-							<span class="fa-stack fa-lg">
-							  <i class="fa fa-circle fa-stack-2x"></i>
-							  <i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
+				 <div class="col-md-7">
+				 	<div class="review-box-container">
+				 	<div class="review-box">
+				 	<h3><span class="bold-red">{{reviewresults.length}}</span> Reviews Counted</h3>
+				 		<p>Positive: {{positiveReviews}}  Negative: {{negativeReviews}}</p>
+						<h3>Critic Rating: <span class="bold-red">{{rating | number:1}}</span>/5</h3>
+
+						<span ng-show="rating > 3">
+							<h4>
+								Crackerjack Approved! <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
 							</span>
-					    </div>
-					    <div ng-show="totalAverage < 85">
+							</h4>
+					    </span>
+
+					    <span ng-show="rating < 3">
+							<h4> Worse Than Dog Food!
 							<span class="fa-stack fa-lg">
 							  <i class="fa fa-circle fa-stack-2x"></i>
 							  <i class="fa fa-thumbs-down fa-stack-1x fa-inverse"></i>
 							</span>
-					    </div>
+					    	</h4>
+					    </span>
+
+					
+						<h3><i class="fa fa-yelp"></i> Yelp Rating: <span class="bold-red">{{yelpresults[0]["hash"].rating}}</span>/5</h3>
+						<h3><i class="fa fa-google"></i> Google Rating: <span class="bold-red">{{details.rating}}</span>/5</h3>
+						<h3>User Rating: </h3>
+						
+				
 					
 					</div>
+					</div>
+				 
 				 </div>
 			</div>
 		</div>
@@ -66,7 +82,7 @@
 		
 		<div class="col-md-5">  
 				<div ng-repeat="x in imageresults" style="display:inline-block" ng-animate="'animate'">
-				<a href="{{x.link}}" target="_blank"><img src="{{x.images.low_resolution.url }}" style="width:160px; padding: 5px;"></a>
+				<a href="{{x.link}}" target="_blank" ng-mouseover="makeLarge()" ng-mouseleave="makeSmall()"><img src="{{x.images.low_resolution.url }}" ng-class="image"></a>{{$index}}
 				</div>
 		</div>	
 
@@ -86,6 +102,11 @@
 					  <!-- Tab panes -->
 					  <div class="tab-content">
 					    <div role="tabpanel" class="tab-pane fade in active" id="home">
+
+					    	<div class="row">
+					    		<div class="col-md-1"></div>
+					    		<div class="col-md-10">
+
 					    		<div ng-repeat="x in reviewresults track by $index">
 									<h2 class="bold">{{x.domain.replace("www.", "").replace(".com", "") | uppercase }}</h2>	
 									<h2><em>{{x.title}}</em></h2>
@@ -96,42 +117,64 @@
 										<div ng-show="x.docSentiment['score'] != null">
 											<span class="bold">Score:</span> {{x.docSentiment["score"] | number:0}} {{x.docSentiment["type"] | uppercase}}<br>
 										</div>
-										<p><span class="bold">Keywords:</span> {{x.docSentiment["keywords"][1].text}}, {{x.docSentiment["keywords"][2].text}}, {{x.docSentiment["keywords"][3].text}}, {{x.docSentiment["keywords"][4].text}}, {{x.docSentiment["keywords"][5].text}}, {{x.docSentiment["keywords"][6].text}}</p>
+										<p><span class="bold">Keywords:</span><em> {{x.docSentiment["keywords"][1].text}}, {{x.docSentiment["keywords"][2].text}}, {{x.docSentiment["keywords"][3].text}}, {{x.docSentiment["keywords"][4].text}}, {{x.docSentiment["keywords"][5].text}}, {{x.docSentiment["keywords"][6].text}}</em></p>
 									<br>
 									<br>
 								</div>
+
+							</div>
+							<div class="col-md-1"></div>
+						</div>
+
+
 					    </div>
 					    <div role="tabpanel" class="tab-pane fade" id="profile">
+					    	<br>
+					    	<br>
 					    	<div ng-controller="reviewController">
-					    	<div ng-repeat="x in userReviews">
-					    		<div ng-show="x.restaurant == details.name">
-						    		<h3>{{x.title}} by {{x.name}}</h3>
-						    		<p>{{x.content}}</p>
-						    		<p>User Score {{x.score}}</p>
-						    		<br>
-					    		</div>
+					    	<div class="row">
+					    	<div class="col-md-1"></div>	
+					    	    <div class="col-md-10">
+							    	<div ng-repeat="x in userReviews">
+							    		<div ng-show="x.restaurant == details.name">
+								    		<h3 class"bold">{{x.title}} by <span class="light">{{x.name}}</span></h3>
+								    		<p>{{x.content}}</p>
+								    		<p>User Score {{x.score}}</p>
+								    		<br>
+							    		</div>
+							    	</div>
+							    </div>	
+							<div class="col-md-1"></div>						    	
 					    	</div>
-					    	</div>          
-					    	
+
+					    	</div>          					    	
 
 					    </div>
 					    <div role="tabpanel" class="tab-pane fade" id="messages">
 					    	<br>
-					    	<p><em>{{google.reviews[0].author_name}}</em><br>
-					    	{{google.reviews[0].text}}<br>
-					    	Rating: {{google.reviews[0].rating}}</p>
 					    	<br>
-					    	<p><em>{{google.reviews[1].author_name}}</em><br>
-					    	{{google.reviews[1].text}}<br>
-					    	Rating: {{google.reviews[1].rating}}</p>
-					    	<br>
-					    	<p><em>{{google.reviews[2].author_name}}</em><br>
-					    	{{google.reviews[2].text}}<br>
-					    	Rating: {{google.reviews[2].rating}}</p>
-					    	<br>
-					    	<p><em>{{google.reviews[3].author_name}}</em><br>
-					    	{{google.reviews[3].text}}<br>
-					    	Rating: {{google.reviews[3].rating}}</p>
+					       <div class="row">
+					    	<div class="col-md-1"></div>	
+					    	    <div class="col-md-10">	    	
+							    	<p><em>{{google.reviews[0].author_name}}</em><br>
+							    	{{google.reviews[0].text}}<br>
+							    	Rating: {{google.reviews[0].rating}}</p>
+							    	<br>
+							    	<p><em>{{google.reviews[1].author_name}}</em><br>
+							    	{{google.reviews[1].text}}<br>
+							    	Rating: {{google.reviews[1].rating}}</p>
+							    	<br>
+							    	<p><em>{{google.reviews[2].author_name}}</em><br>
+							    	{{google.reviews[2].text}}<br>
+							    	Rating: {{google.reviews[2].rating}}</p>
+							    	<br>
+							    	<p><em>{{google.reviews[3].author_name}}</em><br>
+							    	{{google.reviews[3].text}}<br>
+							    	Rating: {{google.reviews[3].rating}}</p>
+							    </div>	
+							<div class="col-md-1"></div>						    	
+					    	</div>
+
 					    </div>
 
 					     <div role="tabpanel" class="tab-pane fade" id="add">
