@@ -20,7 +20,6 @@
 //= require tooltip
 //= require nprogress
 //= require nprogress-angular
-//= require autocomplete
 //= require underscore
 //= require ng-app/main
 //= require_tree .
