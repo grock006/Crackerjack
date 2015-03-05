@@ -1,6 +1,6 @@
 app.factory("Review", function($resource) {  
-   return $resource('/api/reviews/:id', null,
+   return $resource('/api/reviews/:id', {id:'@id'},
                       {
-                        'update': {method: 'PUT'}
+                        'update': {method: 'patch'}
                       })
-           });
+});

@@ -17,9 +17,19 @@ app.controller("reviewController",function($scope, $resource, Review){
       }
     ).$save(function(data){
       console.log(data);
-       $scope.newReview = null
-       $scope.submitMessage = "Thanks For Your Review, Crackerjacker!"
+       $scope.userReviews.unshift(data);
+       $scope.newReview = null;
+       $scope.submitMessage = "Thanks For The Review, Crackerjacker!"
     });
   };
 }); 
 
+  // $scope.createPost = function() {
+  //   new Post({
+  //     title: $scope.newPost.title,
+  //     link: $scope.newPost.link
+  //   }).$save(function(data){
+  //     $scope.posts.unshift(data);
+  //     $scope.newPost = null
+  //   });
+  // }

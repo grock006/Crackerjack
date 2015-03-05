@@ -61,6 +61,7 @@
 				 	<div class="review-box">
 				 	<h3><span class="bold-red">{{reviewresults.length}}</span> Reviews Counted</h3>
 				 		<p>Positive: {{positiveReviews}}  Negative: {{negativeReviews}}</p>
+				 		<p class="smaller-font">Keywords: <em><span ng-repeat="x in main_keywords" class="smaller-font">{{x}}, </span></em></p>
 						<h3>Critic Rating: <span class="bold-red">{{rating | number:1}}</span>/5  <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Crackerjackometer adds the total number of professional critic reviews gathered by our search. It divides that total by the number of reviews with scores over 50 points that have been deemed positive by the Alchemy Sentiment Analysis API."></i></h3>
 
 						<span ng-show="rating > 3">
@@ -95,6 +96,8 @@
 
 	</div>
 
+	<br>
+
 	<div class="row">
 		
 		<div class="col-md-5">  
@@ -123,9 +126,22 @@
 					    	<div class="row">
 					    		<div class="col-md-1"></div>
 					    		<div class="col-md-10">
-
+					    			<br>
+					    			<br>
 					    		<div ng-repeat="x in reviewresults track by $index">
-									<h2 class="bold-red">{{x.domain.replace("www.", "").replace(".com", "") | uppercase }}</h2>	
+					    			<div class="critic-box">	
+									<h2 class="bold-red">
+									<span ng-show="x.docSentiment['type'] == 'positive' ">	
+										<span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
+										</span>
+									</span>
+
+									<span ng-show="x.docSentiment['type'] == 'negative' ">	
+										<span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-thumbs-down fa-stack-1x fa-inverse"></i>
+										</span>
+									</span>
+									{{x.domain.replace("www.", "").replace(".com", "") | uppercase }} 
+									</h2>	
 									<h2><em>{{x.title}}</em></h2>
 									<p>{{x.date_published | date: "fullDate" }}</p>
 									<p>{{x.docSentiment["contentExcerpt"]}}<p>
@@ -135,9 +151,12 @@
 											<span class="bold">Score:</span> {{x.docSentiment["score"] | number:0}} {{x.docSentiment["type"] | uppercase}}<br>
 										</div>
 										<p><span class="bold">Keywords:</span><em> {{x.docSentiment["keywords"][1].text}}, {{x.docSentiment["keywords"][2].text}}, {{x.docSentiment["keywords"][3].text}}, {{x.docSentiment["keywords"][4].text}}, {{x.docSentiment["keywords"][5].text}}, {{x.docSentiment["keywords"][6].text}}</em></p>
+								</div>
 									<br>
 									<br>
 								</div>
+
+					
 
 							</div>
 							<div class="col-md-1"></div>

@@ -18,9 +18,9 @@ module Api
         @images = @client.media_search(@lat, @lng, distance: 1)
 
         if @images == true
-          @images = @client.media_search(@lat, @lng, distance: 1).take(10)
+          @images = @client.media_search(@lat, @lng, distance: 10).take(10)
         else
-          @images = @client.media_search(@lat, @lng, distance: 5).take(10)
+          @images = @client.media_search(@lat, @lng, distance: 20).take(10)
         end 
         
         render json: @images
@@ -235,18 +235,20 @@ module Api
               end
               nokogiri_threads.each { |t| t.join }
 
-              (0...@url_count).each do |i|
-                  @document_results[i][:docSentiment] = {
-                    score: @scores[i], 
-                    type: @type_results[i],
-                    totalAverage: @average,
-                    contentExcerpt: @content_results[i],
-                    keywords: @keywords[i],
-                    total_review: @url_count,
-                    pos_total: @postive_total,
-                    neg_total: @negative_total
-                  }
-                  # Rails.logger.info(i)
+              if @url_count != nil
+                (0...@url_count).each do |i|
+                    @document_results[i][:docSentiment] = {
+                      score: @scores[i], 
+                      type: @type_results[i],
+                      totalAverage: @average,
+                      contentExcerpt: @content_results[i],
+                      keywords: @keywords[i],
+                      total_review: @url_count,
+                      pos_total: @postive_total,
+                      neg_total: @negative_total
+                    }
+                    # Rails.logger.info(i)
+                end
               end
 
               # Rails.logger.info(@score_results)
@@ -255,7 +257,6 @@ module Api
 
 
         render json: @document_results
-        # @crackerjack
 
     end
 

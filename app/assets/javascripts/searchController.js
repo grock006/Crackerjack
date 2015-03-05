@@ -3,12 +3,7 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
     $scope.image = "instagram"
 
     $scope.makeLarge = function(url){
-        // $scope.image.idx = "highlight"
         $scope.main_image_url = url
-    }
-
-    $scope.makeSmall = function(idx){
-        // $scope.image.idx = "instagram"
     }
 
   $scope.options1 = {
@@ -47,6 +42,10 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
     $scope.positiveReviews = parseInt(data[0]['docSentiment']['pos_total']);
     $scope.negativeReviews = parseInt(data[0]['docSentiment']['neg_total']);
     $scope.totalReviews = parseInt(data[0]['docSentiment']['total_review']);
+    $scope.main_keywords = [data[0]['docSentiment']["keywords"][2].text, 
+                            data[1]['docSentiment']["keywords"][2].text,
+                            data[2]['docSentiment']["keywords"][2].text
+                            ];
     $scope.rating = (($scope.positiveReviews / $scope.totalReviews) * 100) / 20
     console.log(data)     
     });
@@ -78,10 +77,6 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
 
 });
 
-    // $scope.map.center = {
-    //     latitude: position.coords.latitude,
-    //     longitude: position.coords.longitude
-    //   };
 
 
    

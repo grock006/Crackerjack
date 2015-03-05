@@ -14,6 +14,10 @@ a {
   color: $crimson;
 }
 
+h2 {
+  font-size: 25px;
+}
+
 .bold {
 	font-weight: 800;
 }
@@ -24,6 +28,10 @@ a {
 
 .small-font {
   font-size: 15px;
+}
+
+.smaller-font {
+  font-size: 12px;
 }
 
 .bold-red {
@@ -143,7 +151,7 @@ hr {
 	font-weight: 800;
 	color: $crimson;
 	text-transform: uppercase;
-  max-height: 315px; 
+  min-height: 390px; 
   border: 3px solid white;
   z-index: 5;
   font-size: 15px;
@@ -269,4 +277,9 @@ opacity: 0;
 
 .animate-enter.animate-enter-active {
 	opacity: 1;
+}
+
+.critic-box {
+    border: 2px solid $lightgray;
+    padding: 15px;
 }

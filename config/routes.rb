@@ -9,7 +9,11 @@ Rails.application.routes.draw do
     end
 
     namespace :api do
-    resources :reviews
-  end
+    	resources :reviews
+  	end
+
+  	# namespace :api do
+  	# 	resources :users
+  	# end
 
 end
