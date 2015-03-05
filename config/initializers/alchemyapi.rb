@@ -91,7 +91,7 @@ class AlchemyAPI
 	
 	def initialize()
 	
-			key = "6d4da82dec83a3c1286f549a203900396a0341a5"	
+			key = ENV["alchemy_api_key"]
 			@apiKey = key
 		
 	end
