@@ -1,4 +1,4 @@
-<div ng-show="reviewresults.length > 0 && imageresults.length > 0" ng-animate="'animate'"> 
+<div ng-show="reviewresults.length > 0 && imageresults.length > 0" class="fade-in"> 
 <div class="container-fluid">
 	<div class="row">
 
@@ -165,8 +165,6 @@
 
 					    </div>
 					    <div role="tabpanel" class="tab-pane fade" id="profile">
-					    	<br>
-					    	<br>
 					    	<div ng-controller="reviewController">
 					    	<div class="row">
 					    	<div class="col-md-1"></div>	
@@ -235,6 +233,10 @@
 
 					     <div role="tabpanel" class="tab-pane fade" id="add">
 					     	<div ng-controller="reviewController">
+
+					     			<div class="row">
+					     				<div class="col-md-1"></div>
+					     				<div class="col-md-10">
 						                  <h1>Submit Your Own Review:</h1>
 						                  <h3 class="bold-red">{{submitMessage}}</h3>
 						                  <form ng-submit="createReview()">
@@ -247,7 +249,10 @@
 						                       <input type="text" ng-model="newReview.score" class="form-control" rows="3" placeholder="Score"><br>
 						                      <button class="btn btn-default">Submit</button>
 						                   </form>
-						            </div>
+						     			</div>
+						     			<div class="col-md-1"></div>
+						     		</div>
+						     </div>
 					     </div>
 					  </div>
 
