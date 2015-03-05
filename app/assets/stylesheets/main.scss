@@ -1,7 +1,7 @@
 $crimson: #f62b30;
 $yellow: #ffee0a;
 $maroon: #700f12;
-$lightslate: #7c7c98;
+$lightslate: #ddd;
 $cadetblue: #5d908c;
 $lightgray: #e7e7e7;
 
@@ -47,6 +47,12 @@ h2 {
 	margin-top: 15px;
 	height: 212px; 
 	border: 1px solid $lightslate;
+}
+
+.main-image {
+  height: 212px; 
+  margin-top:15px;
+  border: 1px solid $lightslate;
 }
 
 .instagram-border {
@@ -145,7 +151,6 @@ hr {
 }
 
 .review-box {
-  margin-top: 10px;
 	background-color: $yellow;
 	padding: 10px;
 	font-weight: 800;
@@ -352,5 +357,13 @@ footer {
 .critic-box {
     border: 2px solid $lightgray;
     padding: 15px;
-    box-shadow: 5px 5px 2px $lightslate;
+    box-shadow: 3px 3px 2px #ddd;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    color: #555555;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-bottom-color: transparent;
+    box-shadow: 3px 0px 0px #ddd;
+    cursor: default;
 }

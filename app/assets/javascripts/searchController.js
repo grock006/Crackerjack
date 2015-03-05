@@ -19,6 +19,8 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
 
    $scope.searchName = function(name, location){
 
+    $scope.main_keywords = [];
+
     name = $scope.details.name
     location = $scope.details.address_components[2].long_name + " " + $scope.details.address_components[3].short_name
     $scope.google = $scope.details
