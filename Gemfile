@@ -25,17 +25,24 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# Angular JS
 gem 'angularjs-rails'
+
+# Instagram
 gem 'instagram'
 
+# Nokogiri
 gem 'nokogiri'
 gem 'pry-rails'
 gem 'httparty'
 
+# Yelp
 gem 'yelp', require: 'yelp'
 
+# Angular UI Bootstrap Rails
 gem 'angular-ui-bootstrap-rails'
 
+# Angular Loading Bar and Spinner
 gem 'nprogress-rails'
 
 gem "rails_12factor", group: :production

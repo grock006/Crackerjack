@@ -1,0 +1,32 @@
+<div class="review-box-container">
+	<div class="review-box">
+		<h3><span class="bold-red">{{reviewresults.length}}</span> Reviews Counted</h3>
+			<p>Positive: {{positiveReviews}}  Negative: {{negativeReviews}}</p>
+			<p class="smaller-font">Keywords: <em><span ng-repeat="x in main_keywords" class="smaller-font">{{x}}, </span></em></p>
+				<h3>Critic Rating: <span class="bold-red">{{rating | number:1}}</span>/5  <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Crackerjackometer adds the total number of professional critic reviews gathered by our search. It divides that total by the number of reviews with scores over 50 points that have been deemed positive by the Alchemy Sentiment Analysis API."></i></h3>
+
+						<span ng-show="rating > 3">
+							<h4 class="bold-red">
+								Crackerjack Approved! <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
+							</span>
+							</h4>
+					    </span>
+
+					    <span ng-show="rating < 3">
+							<h4> Worse Than Dog Food!
+							<span class="fa-stack fa-lg">
+							  <i class="fa fa-circle fa-stack-2x"></i>
+							  <i class="fa fa-thumbs-down fa-stack-1x fa-inverse"></i>
+							</span>
+					    	</h4>
+					    </span>
+
+					
+						<h4><i class="fa fa-yelp"></i> Yelp Rating: <span class="bold-red">{{yelpresults[0]["hash"].rating}}</span>/5</h4>
+						<h4><i class="fa fa-google"></i> Google Rating: <span class="bold-red">{{details.rating}}</span>/5</h4>
+						<h4>User Rating: </h4>
+						
+				
+					
+	</div>
+</div>

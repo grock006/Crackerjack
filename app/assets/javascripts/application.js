@@ -17,13 +17,11 @@
 //= require angular-animate
 //= require bootstrap-sprockets
 //= require angular-ui-bootstrap
+//= require tooltip
 //= require nprogress
 //= require nprogress-angular
 //= require autocomplete
 //= require underscore
-//= require main
+//= require ng-app/main
 //= require_tree .
 
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})

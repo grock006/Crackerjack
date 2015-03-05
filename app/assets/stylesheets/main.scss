@@ -1,3 +1,5 @@
+// GLOBAL STYLES ///////////////////////////////
+
 $crimson: #f62b30;
 $yellow: #ffee0a;
 $maroon: #700f12;
@@ -43,11 +45,35 @@ h2 {
 	color: #f62b3;
 }
 
+.form-control {
+  width: 75%
+}
+
+// BUTTONS //////////////////////////////
+
+.btn-default {
+  color: white;
+  background-color: $crimson;
+  border-color: none;
+  font-weight: 800;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active {
+  color: $crimson;
+  background-color: white;
+  border-color: none;
+  font-weight: 800;
+}
+
+// MAP ////////////////////////
+
 .angular-google-map-container { 
 	margin-top: 15px;
 	height: 212px; 
 	border: 1px solid $lightslate;
 }
+
+// INSTAGRAM IMAGES //////////
 
 .main-image {
   height: 212px; 
@@ -59,6 +85,24 @@ h2 {
   width: 100%;
 	border: 1px solid $lightslate;
 }
+
+.instagram {
+  width:160px; 
+  padding: 5px;
+}
+
+.highlight {
+  width: 400px;
+  padding: 5px;
+}
+
+.instagram-small {
+  width: 90px;
+  padding: 2px;
+  background-color: $lightgray;
+}
+
+// NAVBAR STYLES /////////////////
 
 .navbar > .container-fluid .navbar-brand {
 	font-weight: 800;
@@ -74,6 +118,21 @@ h2 {
 .navbar-right {
 	margin-right: 25px;
 }
+
+.navbar-default {
+  background-color: white;
+  padding-top: 10px;
+}
+
+.navbar {
+  min-height: 75px;
+}
+
+.navbar-form .form-control {
+    width: 450px;
+}
+
+// LOADING BAR AND SPINNER ///////////
 
 #nprogress .spinner {
   display: block;
@@ -123,6 +182,8 @@ h2 {
           transform: rotate(3deg) translate(0px, -4px);
 }
 
+// RESTAURANT STYLES ///////////////////////
+
 address {
 	font-size: 15px;
 }
@@ -132,18 +193,8 @@ address {
 	padding: 6px 12px 6px 12px;
 }
 
-.navbar-default {
-	background-color: white;
-	padding-top: 10px;
-}
 
-.navbar {
-	min-height: 75px;
-}
-
-hr {
-	// border-top: 1px solid $lightslate;
-}
+// REVIEW BOX ////////////////////////////
 
 .review-box-container {
   background-color: $yellow;
@@ -162,9 +213,23 @@ hr {
   font-size: 15px;
 }
 
-.review-box h3 {
+// CRITIC BOX ///////////////////////
 
+.critic-box {
+    border: 2px solid $lightgray;
+    padding: 15px;
+    box-shadow: 3px 3px 2px #ddd;
 }
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    color: #555555;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-bottom-color: transparent;
+    box-shadow: 3px 0px 0px #ddd;
+    cursor: default;
+}
+
+// AUTOCOMPLETE STYLES //////////////
 
 .pac-container {
     font-family: 'Raleway', sans-serif;
@@ -179,73 +244,15 @@ hr {
     color: #555555;
 }
 
-.navbar-form .form-control {
-    width: 450px;
-}
-
-.instagram {
-  width:160px; 
-  padding: 5px;
-}
-
-.highlight {
-  width: 400px;
-  padding: 5px;
-}
-
-
-// .background-times-square {
-//     background-image: url("times_square.jpg");
-//     background-size: cover;
-//     height: 100%;
-//     background-repeat: no-repeat;
-// }
-
-.background-image-main {
-    margin-top: -20px;
-    background-image: url("main_two.jpg");
-    background-size: cover;
-    height: 100%;
-    background-repeat: no-repeat;
-}
-
-
-.dark-background {
-    background-color: rgba(0,0,0,0.5);
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-    z-index: 2;
-}
+// FOOTER //////////////////////////
 
 footer {
   margin: 100px;
   min-height: 500px;
 }
 
-.form-control {
-  width: 75%
-}
 
-.btn-default {
-  color: white;
-  background-color: $crimson;
-  border-color: none;
-  font-weight: 800;
-}
-
-.btn-default:hover, .btn-default:focus, .btn-default:active {
-  color: $crimson;
-  background-color: white;
-  border-color: none;
-  font-weight: 800;
-}
-
-.instagram-small {
-  width: 90px;
-  padding: 2px;
-  background-color: $lightgray;
-}
+// TOOLTIP ///////////////////////
 
 .tooltip{
     position:absolute;
@@ -272,6 +279,24 @@ footer {
     -webkit-border-radius:4px;
     -moz-border-radius:4px;
     border-radius:4px
+}
+
+// LANDING PAGE BACKGROUND IMAGE AND ANIMATION ////////
+
+.background-image-main {
+    margin-top: -20px;
+    background-image: url("main_two.jpg");
+    background-size: cover;
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+.dark-background {
+    background-color: rgba(0,0,0,0.5);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
 }
 
 .fade-in {
@@ -354,16 +379,4 @@ footer {
     }
 }
 
-.critic-box {
-    border: 2px solid $lightgray;
-    padding: 15px;
-    box-shadow: 3px 3px 2px #ddd;
-}
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-    color: #555555;
-    background-color: #fff;
-    border: 2px solid #ddd;
-    border-bottom-color: transparent;
-    box-shadow: 3px 0px 0px #ddd;
-    cursor: default;
-}
+
