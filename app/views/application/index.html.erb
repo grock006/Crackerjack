@@ -173,11 +173,15 @@
 					    	    <div class="col-md-10">
 							    	<div ng-repeat="x in userReviews">
 							    		<div ng-show="x.restaurant == details.name">
+							    			<div class="critic-box">
 								    		<h3 class"bold">{{x.title}} by <span class="light">{{x.name}}</span></h3>
 								    		<p>{{x.content}}</p>
 								    		<p>User Score {{x.score}}</p>
 								    		<br>
 							    		</div>
+							    		</div>
+							    		<br>
+							    		<br>
 							    	</div>
 							    </div>	
 							<div class="col-md-1"></div>						    	
@@ -191,22 +195,38 @@
 					    	<br>
 					       <div class="row">
 					    	<div class="col-md-1"></div>	
-					    	    <div class="col-md-10">	    	
+					    	    <div class="col-md-10">	
+
+					    	    	<div class="critic-box">
 							    	<p><em><span class="bold">{{google.reviews[0].author_name}}</span></em><br>
 							    	{{google.reviews[0].text}}<br>
 							    	<span class="bold-red">Rating: {{google.reviews[0].rating}}</span></p>
+							    	</div>
+							    	
 							    	<br>
+
+									<div class="critic-box">							    
 							    	<p><em><span class="bold">{{google.reviews[1].author_name}}</span></em><br>
 							    	{{google.reviews[1].text}}<br>
 							    	<span class="bold-red">Rating: {{google.reviews[1].rating}}</span></p>
+							    	</div>
+							    	
 							    	<br>
+							    	
+							    	<div class="critic-box">
 							    	<p><em><span class="bold">{{google.reviews[2].author_name}}</span></em><br>
 							    	{{google.reviews[2].text}}<br>
 							    	<span class="bold-red">Rating: {{google.reviews[2].rating}}</span></p>
-							    	<br>
+							    	</div>
+							    
+							    <!-- 	<br>
+							    
+							    	<div class="critic-box">
 							    	<p><em><span class="bold">{{google.reviews[3].author_name}}</span></em><br>
 							    	{{google.reviews[3].text}}<br>
 							    	<span class="bold-red">Rating: {{google.reviews[3].rating}}</span></p>
+							    	</div> -->
+							    
 							    </div>	
 							<div class="col-md-1"></div>						    	
 					    	</div>
