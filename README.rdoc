@@ -9,7 +9,7 @@ and the Alchemy Sentiment Analysis API to analyze results for positive or negati
 the Yelp gem and Google Places API to return restaurant information. Instagram gem returns
 photos from the geolocation(latitude, longitude) of the restaurant.
 
-crackerjack-app.herokuapp.com
+http://crackerjack-app.herokuapp.com
 
 If you want to give it a try:
 
