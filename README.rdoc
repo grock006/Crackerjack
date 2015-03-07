@@ -1,28 +1,20 @@
-== README
+== CRACKERJACK
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Crackerjack is a web application built with AngularJS Front-End and a Ruby on Rails/PostgreSQL back-end as 
+a final project for General Assembly's Web Development Immersive program. The intention of the project was
+to createe a "Rotten Tomatoes"-style ranking system for Restaurants. 
 
-Things you may want to cover:
+It uses the Nokogiri gem and Readability Parser API to scrape Google search results for restaurant reviews, 
+and the Alchemy Sentiment Analysis API to analyze results for positive or negative content. It uses
+the Yelp gem and Google Places API to return restaurant information. Instagram gem returns
+photos from the geolocation(latitude, longitude) of the restaurant.
 
-* Ruby version
+If you want to give it a try:
 
-* System dependencies
+Download.
 
-* Configuration
+Bundle Install.
 
-* Database creation
+Rake db:create and Rake db:migrate
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Rails server.
