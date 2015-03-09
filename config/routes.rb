@@ -12,8 +12,4 @@ Rails.application.routes.draw do
     	resources :reviews
   	end
 
-  	# namespace :api do
-  	# 	resources :users
-  	# end
-
 end
