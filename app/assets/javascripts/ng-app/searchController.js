@@ -7,12 +7,8 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
     }
 
   $scope.options1 = {
-      types: 'establishment'
-    };
-
-     $scope.options2 = {
-      country: 'usa',
-      types: '(cities)'
+      types: 'establishment',
+      watchEnter: false
     };
 
     $scope.details = ""
@@ -20,6 +16,7 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
    $scope.searchName = function(name, location){
 
     $scope.main_keywords = [];
+    $scope.detailsName = $scope.details.name
 
     name = $scope.details.name
     location = $scope.details.address_components[2].long_name + " " + $scope.details.address_components[3].short_name
