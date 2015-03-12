@@ -235,7 +235,7 @@ module Api
               end
               nokogiri_threads.each { |t| t.join }
 
-              Restaurant.create(name: @name, location: @location, content: @content_results[0], total_reviews: @url_count, positive_reviews: @postive_total, negative_reviews: @negative_total)
+              # Restaurant.create(name: @name, location: @location, content: @content_results[0], total_reviews: @url_count, positive_reviews: @postive_total, negative_reviews: @negative_total)
 
               if @url_count != nil
                 (0...@url_count).each do |i|
