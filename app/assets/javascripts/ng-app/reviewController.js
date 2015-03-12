@@ -23,13 +23,3 @@ app.controller("reviewController",function($scope, $resource, Review){
     });
   };
 }); 
-
-  // $scope.createPost = function() {
-  //   new Post({
-  //     title: $scope.newPost.title,
-  //     link: $scope.newPost.link
-  //   }).$save(function(data){
-  //     $scope.posts.unshift(data);
-  //     $scope.newPost = null
-  //   });
-  // }
