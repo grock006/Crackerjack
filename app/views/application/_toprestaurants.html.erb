@@ -1,0 +1,20 @@
+<h1>Top Restaurants</h1>
+
+<div ng-controller="restaurantController">
+	<div class="row">
+		<div class="col-md-1"></div>	
+			
+			<div class="col-md-10">
+				<ul style="list-style:none;">
+				<div ng-repeat="x in restaurants | orderBy:'-rating' ">
+				
+					<li>{{ x.rating | number:1}} <strong>{{x.name}}</strong></li>
+													
+				</div>
+				</ul>
+
+			</div>
+
+		<div class="col-md-1"></div>						    	
+	</div>
+</div>          		

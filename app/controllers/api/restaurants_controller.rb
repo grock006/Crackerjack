@@ -2,8 +2,13 @@ module Api
   class RestaurantsController < ApplicationController
 
     def index
+      
       restaurants = Restaurant.all
+      # restaurant = restaurants[0][:name] 
+      restaurants.uniq {|x| x[:name]}
+
       render json: restaurants.to_json, only: :id
+      
     end
 
     def show
@@ -21,9 +26,10 @@ module Api
       end
     end
 
+
   private
     def restaurant_params
-      params.require(:review).permit(:name, :location, :content, :total_reviews, :positive_reviews, :negative_reviews)
+      params.require(:review).permit(:name, :location, :content, :total_reviews, :positive_reviews, :negative_reviews, :rating)
     end
 
 

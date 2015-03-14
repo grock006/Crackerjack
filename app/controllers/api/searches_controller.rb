@@ -37,7 +37,10 @@ module Api
 
   def review
         @name = URI.encode(params[:name])
+        @name_clean = (params[:name])
+
         @location = URI.encode(params[:location])
+        @location_clean = (params[:location])
         # add address params, enter any address and convert into zip code
         # Need to add zipcode and/or adddress into search params below
         # restaurant review results
@@ -235,7 +238,13 @@ module Api
               end
               nokogiri_threads.each { |t| t.join }
 
-              # Restaurant.create(name: @name, location: @location, content: @content_results[0], total_reviews: @url_count, positive_reviews: @postive_total, negative_reviews: @negative_total)
+              if @postive_total != nil && @url_count != nil
+              @rating = ((@postive_total / @url_count) * 100) / 20
+              end
+
+              if @content_results[0] != nil && @url_count != nil 
+              Restaurant.create(name: @name_clean, location: @location_clean, content: @content_results[0], total_reviews: @url_count, positive_reviews: @postive_total, negative_reviews: @negative_total, rating: @rating)
+              end
 
               if @url_count != nil
                 (0...@url_count).each do |i|

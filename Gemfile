@@ -33,7 +33,7 @@ gem 'instagram'
 
 # Nokogiri
 gem 'nokogiri'
-gem 'pry-rails'
+# gem 'pry-rails'
 gem 'httparty'
 
 # Yelp
