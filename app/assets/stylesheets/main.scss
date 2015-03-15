@@ -29,7 +29,7 @@ h2 {
 }
 
 .small-font {
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .smaller-font {
@@ -97,7 +97,7 @@ h2 {
 }
 
 .instagram-small {
-  width: 90px;
+  width: 48px;
   padding: 2px;
   background-color: $lightgray;
 }
@@ -185,7 +185,7 @@ h2 {
 // RESTAURANT STYLES ///////////////////////
 
 address {
-	font-size: 15px;
+	font-size: 13px;
 }
 
 .search-btn {
@@ -207,10 +207,15 @@ address {
 	font-weight: 800;
 	color: $crimson;
 	text-transform: uppercase;
-  min-height: 390px; 
+  min-height: 340px; 
   border: 3px solid white;
   z-index: 5;
   font-size: 15px;
+
+  h3 {
+    font-size: 20px;
+  }
+
 }
 
 // CRITIC BOX ///////////////////////
