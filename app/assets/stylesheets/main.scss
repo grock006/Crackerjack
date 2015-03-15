@@ -203,7 +203,7 @@ address {
 // TOP-RATED /////////////////////////////
 
 .top-rated {
-  h3 {
+  h4 {
     font-size: 15px;
   }
 }
@@ -229,6 +229,7 @@ address {
   font-size: 15px;
 
   h3 {
+    margin-top: 10px;
     font-size: 20px;
   }
 
@@ -240,6 +241,18 @@ address {
     border: 2px solid $lightgray;
     padding: 15px;
     box-shadow: 3px 3px 2px #ddd;
+
+    h2.bold-red {
+      font-size: 20px;
+      margin: 5px 0px;
+    }
+
+    h2 {
+      font-size: 18px;
+    }
+    p {
+      font-size: 12px;
+    }
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     color: #555555;

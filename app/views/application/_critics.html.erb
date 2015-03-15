@@ -32,15 +32,14 @@
 									{{x.domain.replace("www.", "").replace(".com", "") | uppercase }} 
 									</h2>	
 									<h2><em>{{x.title}}</em></h2>
-									<p>{{x.date_published | date: "fullDate" }}</p>
-									<p>{{x.docSentiment["contentExcerpt"] | limitTo:210}} ... <a href="{{x.url}}" target="_blank">Read Full Review</a></p><br>
+					<!-- 				<p>{{x.date_published | date: "fullDate" }}</p> -->
+									<p>{{x.docSentiment["contentExcerpt"] | limitTo:210}} ... <a href="{{x.url}}" target="_blank">Read Full Review</a></p>
 									<em>{{x.author}}</em>
 										<div ng-show="x.docSentiment['score'] != null">
 											<span class="bold">Score:</span> {{x.docSentiment["score"] | number:0}} {{x.docSentiment["type"] | uppercase}}<br>
 										</div>
 										<p><span class="bold">Keywords:</span><em> {{x.docSentiment["keywords"][1].text}}, {{x.docSentiment["keywords"][2].text}}, {{x.docSentiment["keywords"][3].text}}, {{x.docSentiment["keywords"][4].text}}, {{x.docSentiment["keywords"][5].text}}, {{x.docSentiment["keywords"][6].text}}</em></p>
 								</div>
-									<br>
 									<br>
 								</div>
 
