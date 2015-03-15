@@ -4,9 +4,6 @@ module Api
     def index
       
       restaurants = Restaurant.all
-      # restaurant = restaurants[0][:name] 
-      restaurants.uniq {|x| x[:name]}
-
       render json: restaurants.to_json, only: :id
       
     end

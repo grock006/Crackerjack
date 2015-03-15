@@ -157,7 +157,7 @@ module Api
               @negative_total = 0
               @sentiment_results.each do |x|
                 if x['docSentiment'] && x['docSentiment']['score'] 
-                  if x['docSentiment']['score'].to_f * 100 + 50 > 50 && (x['docSentiment']['type'] == "positive" || x['docSentiment']['type'] == "neutral" || x['docSentiment']['type'] == nil)
+                  if x['docSentiment']['score'].to_f * 100 + 50 > 70 && (x['docSentiment']['type'] == "positive" || x['docSentiment']['type'] == "neutral" || x['docSentiment']['type'] == nil)
                     @postive_total += 1
                   else
                     @negative_total += 1  
@@ -239,7 +239,8 @@ module Api
               nokogiri_threads.each { |t| t.join }
 
               if @postive_total != nil && @url_count != nil
-              @rating = ((@postive_total / @url_count) * 100) / 20
+              rating = ((@postive_total.to_f / @url_count.to_f) * 100) / 20
+              @rating = rating.to_f
               end
 
               if @content_results[0] != nil && @url_count != nil 

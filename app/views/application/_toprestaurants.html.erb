@@ -1,20 +1,106 @@
-<h1>Top Restaurants</h1>
+<h3><strong>Top Rated Restaurants</strong></h3>
+ <div role="tabpanel">
 
-<div ng-controller="restaurantController">
-	<div class="row">
-		<div class="col-md-1"></div>	
-			
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">
+    	<h4 class="bold-red">Los Angeles</h4>
+    </a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">
+    	<h4 class="bold-red">New York</h4>
+    </a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">
+    	<h4 class="bold-red">San Francisco</h4>
+    </a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">
+    	
+    	<br>
+    	<div ng-controller="restaurantController">
+    	<div class="row">			
 			<div class="col-md-10">
 				<ul style="list-style:none;">
 				<div ng-repeat="x in restaurants | orderBy:'-rating' ">
 				
-					<li>{{ x.rating | number:1}} <strong>{{x.name}}</strong></li>
+					<span ng-show="x.location == 'Los Angeles CA'">
+					<li>
+						<span ng-show="x.rating > 3">
+							<span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
+						</span>
+						{{ x.rating | number:1}} <strong>{{x.name}}</strong>
+					</li>
+					</span>
 													
 				</div>
 				</ul>
 
 			</div>
 
-		<div class="col-md-1"></div>						    	
+		<div class="col-md-2"></div>						    	
+	  </div>
 	</div>
-</div>          		
+    
+    </div>
+    <div role="tabpanel" class="tab-pane" id="profile">
+    	
+	    	<br>
+	    	<div ng-controller="restaurantController">
+	    	<div class="row">			
+				<div class="col-md-10">
+					<ul style="list-style:none;">
+					<div ng-repeat="x in restaurants | orderBy:'-rating' ">
+					
+						<span ng-show="x.location == 'New York NY'">
+						<li>
+							<span ng-show="x.rating > 3">
+								<span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
+							</span>
+							{{ x.rating | number:1}} <strong>{{x.name}}</strong>
+						</li>
+						</span>
+														
+					</div>
+					</ul>
+
+				</div>
+
+			<div class="col-md-2"></div>						    	
+		  </div>
+		</div>
+
+   	</div>
+   	<div role="tabpanel" class="tab-pane" id="messages">
+
+   		<br>
+	    	<div ng-controller="restaurantController">
+	    	<div class="row">			
+				<div class="col-md-10">
+					<ul style="list-style:none;">
+					<div ng-repeat="x in restaurants | orderBy:'-rating' ">
+					
+						<span ng-show="x.location == 'San Francisco CA'">
+						<li>
+							<span ng-show="x.rating > 3">
+								<span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
+							</span>
+							{{ x.rating | number:1}} <strong>{{x.name}}</strong>
+						</li>
+						</span>
+														
+					</div>
+					</ul>
+
+				</div>
+
+			<div class="col-md-2"></div>						    	
+		  </div>
+		</div>
+
+   	</div>
+  </div>
+
+ </div>
+
