@@ -22,7 +22,7 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
 
    $scope.searchName = function(name, location){
 
-    $scope.startSpin();
+    usSpinnerService.spin('spinner-1');
 
     $scope.main_keywords = [];
     $scope.detailsName = $scope.details.name
