@@ -1,4 +1,4 @@
-app.controller("searchController",function($scope, ImageResource, ReviewResource, YelpResource){
+app.controller("searchController",function($scope, ImageResource, ReviewResource, YelpResource, usSpinnerService){
 
     $scope.image = "instagram"
 
@@ -14,6 +14,8 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
     $scope.details = ""
 
    $scope.searchName = function(name, location){
+
+    usSpinnerService.spin('spinner-1');
 
     $scope.main_keywords = [];
     $scope.detailsName = $scope.details.name
