@@ -73,6 +73,8 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
     
     });
 
+    usSpinnerService.stop('spinner-1');
+
  };
    
 
