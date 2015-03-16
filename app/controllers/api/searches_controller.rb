@@ -95,7 +95,8 @@ module Api
           results_pass_nine = results_pass_eight.delete_if {|x| x =~ /gayot/}
           results_pass_ten = results_pass_nine.delete_if {|x| x =~ /google/}
           results_pass_eleven = results_pass_ten.delete_if {|x| x =~ /tastemade/}
-          @results = results_pass_eleven
+          results_pass_twelve = results_pass_eleven.delete_if {|x| x =~ /yellowpages/}
+          @results = results_pass_twelve
 
           # Take the results array
           result_group = []

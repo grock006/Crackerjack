@@ -21,6 +21,8 @@
 //= require nprogress
 //= require nprogress-angular
 //= require underscore
+//= require spin.min
+//= require angular-spinner.min
 //= require ng-app/main
 //= require_tree .
 
