@@ -2,6 +2,7 @@
 	<div class="review-box">
 		<h3><span class="bold-red">{{reviewresults.length}}</span> Reviews Counted</h3>
 			<p>Positive: {{positiveReviews}}  Negative: {{negativeReviews}}</p>
+
 				<h3>Critic Rating: <span class="bold-red">{{rating | number:1}}</span>/5  <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="top" title="Crackerjackometer adds the total number of professional critic reviews gathered by our search. It divides that total by the number of reviews with scores over 50 points that have been deemed positive by the Alchemy Sentiment Analysis API."></i></h3>
 
 						<span ng-show="rating > 3">

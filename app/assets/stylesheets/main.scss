@@ -119,6 +119,11 @@ h4 {
 	color: $crimson;
 }
 
+.navbar-default .navbar-nav > li > a:focus {
+  color: $crimson;
+  border: none;
+}
+
 .navbar-right {
 	margin-right: 25px;
 }
@@ -223,7 +228,7 @@ address {
 
 .review-box {
 	background-color: $yellow;
-	padding: 10px;
+	padding: 24px;
 	font-weight: 800;
 	color: $crimson;
 	text-transform: uppercase;
