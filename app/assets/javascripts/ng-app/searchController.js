@@ -25,7 +25,6 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
     }
 
     $scope.startSpin();
-    $scope.stopSpin();
 
     // usSpinnerService.spin('spinner-1');
 
