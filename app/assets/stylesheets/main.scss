@@ -143,7 +143,7 @@ h2 {
 }
 
 #nprogress .bar {
-  background: $crimson;
+  background: white;
 
   position: fixed;
   z-index: 1031;
@@ -174,7 +174,7 @@ h2 {
   right: 0px;
   width: 100px;
   height: 100%;
-  box-shadow: 0 0 10px $crimson, 0 0 5px $crimson;
+  box-shadow: 0 0 10px white, 0 0 5px white;
   opacity: 1.0;
 
   -webkit-transform: rotate(3deg) translate(0px, -4px);

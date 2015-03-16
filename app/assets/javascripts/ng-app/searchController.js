@@ -13,6 +13,8 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
 
     $scope.details = ""
 
+   $scope.searchName = function(name, location){
+
     $scope.startSpin = function(){
         usSpinnerService.spin('spinner-1');
     }
@@ -20,9 +22,9 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
         usSpinnerService.stop('spinner-1');
     }
 
-   $scope.searchName = function(name, location){
+    $scope.startSpin();
 
-    usSpinnerService.spin('spinner-1');
+    // usSpinnerService.spin('spinner-1');
 
     $scope.main_keywords = [];
     $scope.detailsName = $scope.details.name

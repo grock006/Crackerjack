@@ -9,7 +9,7 @@ app.config(['$httpProvider',
 
 
 NProgress.configure({
-  showSpinner: true,
+  showSpinner: false,
   ease: 'ease',
   speed: 700
 });
