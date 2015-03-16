@@ -11,15 +11,24 @@
 					  <!-- Tab panes -->
 					  <div class="tab-content">
 					    <div role="tabpanel" class="tab-pane fade in active" id="home">
-
 					    	<div class="row">
 					    		<div class="col-md-1"></div>
+	
 					    		<div class="col-md-10">
-					    			<br>
-					    			<br>
+	
 					    		<div ng-repeat="x in reviewresults track by $index">
-					    			<div class="critic-box">	
-									<h2 class="bold-red">
+					    	
+					    	
+
+					    		<!-- Critic Box -->
+					    		<div class="critic-box">
+
+					    		<div class="row">			
+					    		  <div class="col-md-3">	
+								
+								<h4 class="bold-red">
+									<br>
+									{{x.domain.replace("www.", "").replace(".com", "") | uppercase }}<br> 
 									<span ng-show="x.docSentiment['type'] == 'positive' ">	
 										<span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
 										</span>
@@ -29,10 +38,15 @@
 										<span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-thumbs-down fa-stack-1x fa-inverse"></i>
 										</span>
 									</span>
-									{{x.domain.replace("www.", "").replace(".com", "") | uppercase }} 
-									</h2>	
+									</h4>
+
+
+								</div>
+								
+								<div class="col-md-9">
+
 									<h2><em>{{x.title}}</em></h2>
-					<!-- 				<p>{{x.date_published | date: "fullDate" }}</p> -->
+										<!-- <p>{{x.date_published | date: "fullDate" }}</p> -->
 									<p>{{x.docSentiment["contentExcerpt"] | limitTo:210}} ... <a href="{{x.url}}" target="_blank">Read Full Review</a></p>
 									<em>{{x.author}}</em>
 										<div ng-show="x.docSentiment['score'] != null">
@@ -40,12 +54,23 @@
 										</div>
 										<p><span class="bold">Keywords:</span><em> {{x.docSentiment["keywords"][1].text}}, {{x.docSentiment["keywords"][2].text}}, {{x.docSentiment["keywords"][3].text}}, {{x.docSentiment["keywords"][4].text}}, {{x.docSentiment["keywords"][5].text}}, {{x.docSentiment["keywords"][6].text}}</em></p>
 								</div>
-									<br>
+								<!-- End Critic Box -->
+								<br>
+								
+								</div>
+								
 								</div>
 
-					
+
+
+	
+
+								</div>
+								<!-- End ng-repeat  -->
 
 							</div>
+							<!-- End Col-md-10 -->
+	
 							<div class="col-md-1"></div>
 						</div>
 
