@@ -19,10 +19,13 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
         usSpinnerService.spin('spinner-1');
     }
     $scope.stopSpin = function(){
+        if (reviewresults.length > 0 && imageresults.length > 0){
         usSpinnerService.stop('spinner-1');
+        }
     }
 
     $scope.startSpin();
+    $scope.stopSpin();
 
     // usSpinnerService.spin('spinner-1');
 
