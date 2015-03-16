@@ -24,11 +24,9 @@
 					    		<div class="critic-box">
 
 					    		<div class="row">			
-					    		<div class="col-md-3">	
+					    		<div class="col-md-1" style="padding-top:15px">	
 								
-								<h4 class="bold-red" style="font-size:12px;">
-									<br>
-									{{x.domain.replace("www.", "").replace(".com", "") | uppercase }}<br> 
+								<h2 class="bold-red">
 									<span ng-show="x.docSentiment['type'] == 'positive' ">	
 										<span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
 										</span>
@@ -38,21 +36,22 @@
 										<span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-thumbs-down fa-stack-1x fa-inverse"></i>
 										</span>
 									</span>
-									</h4>
+								</h2>
 
 
 								</div>
 								
-								<div class="col-md-9">
+								<div class="col-md-1"></div>	
+								<div class="col-md-10">
 
-									<h2><em>{{x.title}}</em></h2>
+									<h2><span class="bold-red">{{x.domain.replace("www.", "").replace(".com", "") | uppercase }}</span> | <em>{{x.title}}</em></h2>
 										<!-- <p>{{x.date_published | date: "fullDate" }}</p> -->
 									<p>{{x.docSentiment["contentExcerpt"] | limitTo:210}} ... <a href="{{x.url}}" target="_blank">Read Full Review</a></p>
 									<em>{{x.author}}</em>
 										<div ng-show="x.docSentiment['score'] != null">
 											<span class="bold">Score:</span> {{x.docSentiment["score"] | number:0}} {{x.docSentiment["type"] | uppercase}}<br>
 										</div>
-										<p><span class="bold">Keywords:</span><em> {{x.docSentiment["keywords"][1].text}}, {{x.docSentiment["keywords"][2].text}}, {{x.docSentiment["keywords"][3].text}}, {{x.docSentiment["keywords"][4].text}}, {{x.docSentiment["keywords"][5].text}}, {{x.docSentiment["keywords"][6].text}}</em></p>
+								<!-- 		<p><span class="bold">Keywords:</span><em> {{x.docSentiment["keywords"][1].text}}, {{x.docSentiment["keywords"][2].text}}, {{x.docSentiment["keywords"][3].text}}, {{x.docSentiment["keywords"][4].text}}, {{x.docSentiment["keywords"][5].text}}, {{x.docSentiment["keywords"][6].text}}</em></p> -->
 								</div>
 								<!-- End Critic Box -->
 								<br>
@@ -143,7 +142,7 @@
 					     			<div class="row">
 					     				<div class="col-md-1"></div>
 					     				<div class="col-md-10">
-						                  <h1>Submit Your Own Review:</h1>
+						                  <h3>Submit Your Own Review:</h3>
 						                  <h3 class="bold-red">{{submitMessage}}</h3>
 						                  <form ng-submit="createReview()">
 						     				   <!-- Add Restaurant -->

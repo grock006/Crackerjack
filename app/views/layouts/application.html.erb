@@ -15,7 +15,7 @@
 <%= render partial: "layouts/nav" %>	
 
 <div ng-hide="reviewresults.length > 0 && imageresults.length > 0">
-<span us-spinner="{radius:19, width:30, length:0, corners:0.1, color:'white', lines:17}" spinner-key="spinner-1"></span>
+<span us-spinner="{radius:19, width:30, length:0, corners:0.1, color:'white', lines:17, speed:1.6, shadow:on, trail:74}" spinner-key="spinner-1"></span>
 </div>
 
 <%= yield %>

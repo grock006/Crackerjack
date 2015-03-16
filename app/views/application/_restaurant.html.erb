@@ -1,6 +1,5 @@
 <div class="restaurant-info">
-<h3 class="bold">{{google.name}}<br>
-	<span class="light">{{yelpresults[0]["hash"].location.neighborhoods[0]}}</span><h3>
+<h3 class="bold">{{google.name}}<span class="light"> | {{yelpresults[0]["hash"].location.neighborhoods[0]}}</span><h3>
 		<span class="light small-font">{{yelpresults[0]["hash"].categories[0][0]}}</span>
 				<address>
 						{{google.address_components[0].long_name}} {{google.address_components[1].long_name}}<br>
@@ -17,5 +16,5 @@
 					{{google.opening_hours.weekday_text[5]}}<br>
 					{{google.opening_hours.weekday_text[6]}}<br>
 				</div>
-				<br>
+				<p class="small-font bold">Keywords: <em><span ng-repeat="x in main_keywords" class="smaller-font">{{x}}, </span></em></p>
 </div>

@@ -20,6 +20,10 @@ h2 {
   font-size: 25px;
 }
 
+h4 {
+  font-size: 16px;
+}
+
 .bold {
 	font-weight: 800;
 }
@@ -187,6 +191,7 @@ h2 {
 .restaurant-info {
   h3 {
     margin-bottom: -20px;
+    margin-top: 15px;
   }
 }
 
@@ -204,7 +209,7 @@ address {
 
 .top-rated {
   h4 {
-    font-size: 15px;
+    font-size: 16px;
   }
 }
 
@@ -259,8 +264,16 @@ address {
     background-color: #fff;
     border: 2px solid #ddd;
     border-bottom-color: transparent;
-    box-shadow: 3px 0px 0px #ddd;
+    // box-shadow: 3px 0px 0px #ddd;
     cursor: default;
+}
+
+.tab-content>.active {
+  background-color: lightyellow;
+}
+
+.nav-tabs>li.active>a {
+  background-color: lightyellow; 
 }
 
 // AUTOCOMPLETE STYLES //////////////
