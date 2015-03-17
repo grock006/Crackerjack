@@ -479,10 +479,16 @@ footer {
     }
 
     .mobile-search {
-       background-color: white;
-       padding: 10px;
-       top: 100px;
+       padding: 18px;
+       z-index: 5; 
     }
 
+    .navbar {
+      margin-bottom: 0px;
+    }
+
+    .background-image-main {
+      margin-top: 0px;
+    }
 
 }
