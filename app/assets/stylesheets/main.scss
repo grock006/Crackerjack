@@ -436,8 +436,8 @@ footer {
 // MEDIA BREAKPOINTS //////////////////////////////
 
 .regular-hidden {
-    display: none !important;
-    visibility: hidden !important;
+    display: none;
+    visibility: hidden;
 }
 
 @media(max-width: 768px) { 
@@ -469,13 +469,19 @@ footer {
     }
 
     .mobile-hidden {
-      display: none !important;
-      visibility: hidden !important;
+      display: none;
+      visibility: hidden;
     }
 
     .mobile-show {
-      display: block !important;
-      visibility: visible !important;
+      display: block;
+      visibility: visible;
+    }
+
+    .mobile-search {
+       background-color: white;
+       padding: 10px;
+       top: 100px;
     }
 
 
