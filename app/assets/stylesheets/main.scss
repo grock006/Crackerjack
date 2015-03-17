@@ -436,8 +436,17 @@ footer {
 
 @media(max-width: 768px) { 
 
-    body {
-      background-color: $maroon;
+    .top-rated h4 {
+      font-size: 12px;
+    }
+    .nav>li>a {
+      padding: 3px 7px;
+    }
+    h4.bold-red {
+       font-size: 12px;
+    }
+    .angular-google-map-container { 
+      width: 212px; 
     }
 
 
