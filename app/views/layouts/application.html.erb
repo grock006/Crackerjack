@@ -15,6 +15,13 @@
 
 <%= render partial: "layouts/nav" %>	
 
+   <form ng-submit="searchName()" class="regular-hidden mobile-show form-inline" role="search">
+            <div class-"form-group">
+              <input type="text"  ng-autocomplete ng-model="name" options="options1" details="details" class="form-control" placeholder="Search by Restaurant for Food Critic Reviews"/>   
+            </div>
+             <button type="submit" class="btn btn-default search-btn" value="Search"><i class="fa fa-search"></i></button>
+    </form>
+
 <div ng-hide="reviewresults.length > 0 && imageresults.length > 0">
 <span us-spinner="{radius:19, width:30, length:0, corners:0.1, color:'white', lines:17, speed:1.6, shadow:on, trail:74}" spinner-key="spinner-1"></span>
 </div>
@@ -65,10 +72,6 @@
 </div>
 <!-- End Contact Modal  -->
 </div>
-   <form ng-submit="searchName()" class="regular-hidden mobile-show" role="search">
-              <input type="text"  ng-autocomplete ng-model="name" options="options1" details="details" class="form-control" placeholder="Search by Restaurant for Food Critic Reviews"/>   
-             <button type="submit" class="btn btn-default search-btn" value="Search">Search  <i class="fa fa-search"></i></button>
-    </form>
 </div>
 </body>
 </html>
