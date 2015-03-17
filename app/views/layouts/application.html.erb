@@ -67,5 +67,10 @@
 </div>
 </div>
 
+   <form ng-submit="searchName()" class="regular-hidden mobile-show" role="search">
+              <input type="text"  ng-autocomplete ng-model="name" options="options1" details="details" class="form-control" placeholder="Search by Restaurant for Food Critic Reviews"/>   
+             <button type="submit" class="btn btn-default search-btn" value="Search">Search  <i class="fa fa-search"></i></button>
+    </form>
+
 </body>
 </html>
