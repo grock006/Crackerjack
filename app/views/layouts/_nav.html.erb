@@ -16,9 +16,10 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
           <form ng-submit="searchName()" class="navbar-form navbar-left mobile-hidden" role="search">
-              <input type="text"  ng-autocomplete ng-model="name" options="options1" details="details" class="form-control" placeholder="Search by Restaurant for Food Critic Reviews"/>   
+              <input type="text"  ng-autocomplete ng-model="name" options="options1" details="details" class="form-control" placeholder="Search by Restaurant for Food Critic Reviews"/>  
              <button type="submit" class="btn btn-default search-btn" value="Search">Search  <i class="fa fa-search"></i></button>
-            </form>
+          </form>
+                 <span class="error-message" ng-show="errorMessage.length > 0">{{errorMessage}}</span> 
       </ul>
       
       <ul class="nav navbar-nav navbar-right">

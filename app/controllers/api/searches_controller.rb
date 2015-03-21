@@ -28,7 +28,11 @@ module Api
 
             @document_results = GetReviews.call(@name, @location)
 
-            render json: @document_results
+            if @document_results != nil 
+              render json: @document_results
+            else
+              render json: {error: @document_results.errors}, status: 400
+            end
 
       end
 

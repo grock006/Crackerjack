@@ -182,7 +182,7 @@ class GetReviews
 		              Restaurant.create(name: @name_clean, location: @location_clean, content: @content_results[0], total_reviews: @url_count, positive_reviews: @postive_total, negative_reviews: @negative_total, rating: @rating)
 		              end
 
-		              if @url_count != nil
+		              if @url_count != nil && @url_count > 0
 		                (0...@url_count).each do |i|
 		                    @document_results[i][:docSentiment] = {
 		                      score: @scores[i], 

@@ -1,5 +1,9 @@
 app.controller("searchController",function($scope, ImageResource, ReviewResource, YelpResource, usSpinnerService){
 
+    $scope.errorMessage = ""
+    $scope.descriptionClass = "description";
+    $scope.darkBackground = "dark-background";
+
     $scope.image = "instagram"
 
     $scope.makeLarge = function(url){
@@ -13,23 +17,30 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
 
     $scope.details = ""
 
-   $scope.searchName = function(name, location){
+$scope.searchName = function(name, location){
 
-    $scope.startSpin = function(){
+    $scope.errorMessage = ""
+    $scope.darkBackground = "darker-background";
+
+    $scope.startSpin = function(name, location){
         usSpinnerService.spin('spinner-1');
     }
+
     $scope.stopSpin = function(){
-        if (reviewresults.length > 0 && imageresults.length > 0){
         usSpinnerService.stop('spinner-1');
-        }
     }
-
-    $scope.startSpin();
-
-    // usSpinnerService.spin('spinner-1');
 
     $scope.main_keywords = [];
     $scope.detailsName = $scope.details.name
+
+    if($scope.detailsName){
+        $scope.startSpin();
+        $scope.descriptionClass = "describe-hidden";
+        $scope.darkBackground = "darker-background";
+    }
+    else {
+        $scope.errorMessage = "Please Enter Full Autocomplete Name and Address"
+    }
 
     name = $scope.details.name
     location = $scope.details.address_components[2].long_name + " " + $scope.details.address_components[3].short_name
@@ -48,7 +59,16 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
 
     $scope.reviewresults = []
     $scope.reviewresults = reviews.search();
+
+    console.log($scope.reviewresults);
+    
     $scope.reviewresults.$promise.then(function(data) {
+        if (data){
+            $scope.stopSpin();
+            console.log("hello world");
+        }
+    console.log(data);
+    console.log(data.$resolved);    
     $scope.reviewresults = data;  
     $scope.totalAverage = parseInt(data[0]['docSentiment']['totalAverage']);
     $scope.positiveReviews = parseInt(data[0]['docSentiment']['pos_total']);
@@ -58,9 +78,9 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
                             data[1]['docSentiment']["keywords"][2].text,
                             data[2]['docSentiment']["keywords"][2].text
                             ];
-    $scope.rating = (($scope.positiveReviews / $scope.totalReviews) * 100) / 20
-    console.log(data)     
+    $scope.rating = (($scope.positiveReviews / $scope.totalReviews) * 100) / 20    
     });
+    
 
     var yelp = YelpResource(name, location);
 
