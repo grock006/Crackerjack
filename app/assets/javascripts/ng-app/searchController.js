@@ -6,8 +6,12 @@ app.controller("searchController",function($scope, ImageResource, ReviewResource
 
     $scope.image = "instagram"
 
-    $scope.makeLarge = function(url){
-        $scope.main_image_url = url
+    $scope.makeLarge = function(url, text, username, userpic, link){
+        $scope.main_image_url = url;
+        $scope.imageText = text;
+        $scope.userName = username;
+        $scope.userPic = userpic;
+        $scope.imageLink = link;
     }
 
   $scope.options1 = {

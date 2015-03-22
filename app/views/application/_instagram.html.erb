@@ -1,3 +1,3 @@
 <div ng-repeat="x in imageresults" style="display:inline-block" ng-animate="'animate'">
-	<a href="{{x.link}}" target="_blank" ng-mouseover="makeLarge(x.images.low_resolution.url)"><img src="{{x.images.low_resolution.url }}" class="instagram-small"></a>
+	<a href="{{x.link}}" target="_blank" ng-mouseover="makeLarge(x.images.low_resolution.url, x.caption.text, x.user.username, x.user.profile_picture, x.link)"><img src="{{x.images.low_resolution.url }}" class="instagram-small"></a>
 </div>

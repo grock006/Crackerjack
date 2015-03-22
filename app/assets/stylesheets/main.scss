@@ -85,10 +85,39 @@ h4 {
 
 // INSTAGRAM IMAGES //////////
 
+.main-image-container {
+  position: relative;
+}
+
+p.inner-text {
+  position: absolute;
+  color: white;
+  width: 211px;
+  padding: 7px;
+  background-color: rgba(0,0,0,0.4);
+  top: 7%;
+  left: 0;
+  font-size: 10px;
+}
+
+p.inner-photo {
+  position: absolute;
+  color: white;
+  width: 211px;
+  padding: 7px;
+  background-color: rgba(0,0,0,0.4);
+  bottom: -5%;
+  left: 0;
+  font-weight: 900;
+  font-size: 12px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5)
+}
+
 .main-image {
   height: 212px; 
   margin-top:15px;
   border: 1px solid $lightslate;
+  box-shadow: 5px 5px 5px #888888;
 }
 
 .instagram-border {
@@ -108,8 +137,16 @@ h4 {
 
 .instagram-small {
   width: 48px;
-  padding: 2px;
-  background-color: $lightgray;
+  padding: 4px;
+  -webkit-transition: all ease-in-out 100ms;
+  transition: all ease-in-out 100ms;
+  // background-color: $lightgray;
+}
+
+.instagram-small:hover {
+  width: 52px;
+  padding: none;
+  box-shadow: 2px 2px 2px #888888;
 }
 
 // NAVBAR STYLES /////////////////
@@ -233,6 +270,15 @@ address {
   h4 {
     font-size: 16px;
   }
+}
+
+// MAP //////////////////////////////////
+
+
+.map .angular-google-map-container { 
+  margin-top: 15px;
+  height: 500px; 
+  border: 1px solid $lightslate;
 }
 
 

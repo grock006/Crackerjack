@@ -30,8 +30,16 @@
 			
 			</div>
 			<div class="col-md-6">
-				<img src="{{main_image_url}}" class="main-image">
-			</div>
+				<a href="{{imageLink}}" target="_blank">
+				<div class="main-image-container">
+					<p class="inner-photo"><img style="width:20%; border-radius:3px" src="{{userPic}}">
+						<span style="padding-left:4px">{{userName}}</span>
+					</p>
+					<img src="{{main_image_url}}" class="main-image">
+					<p class="inner-text">{{imageText}}</p>
+				</div>
+				</a>
+			</div>			
 		</div>
 
 		<br>
@@ -72,6 +80,29 @@
 	</div>
 
 <!-- End Container -->
+</div>
+<!-- Map Modal -->
+<div class="map">
+<div class="modal" id="map" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+      	  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      	<h3 class="bold">{{google.name}}</h3>
+      	<address>
+			{{google.address_components[0].long_name}} {{google.address_components[1].long_name}}<br>
+			{{google.address_components[2].long_name}}, {{google.address_components[3].short_name}} {{google.address_components[5].long_name}}<br>
+		</address>
+      </div>
+      <div class="modal-body">
+			 <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+			 <ui-gmap-marker coords="marker.coords" idkey="marker.id">
+			</ui-gmap-marker>
+			</ui-gmap-google-map>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 <footer></footer>
 </div>
