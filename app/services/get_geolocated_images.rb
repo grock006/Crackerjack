@@ -13,9 +13,9 @@ class GetGeolocatedImages
         images = @client.media_search(lat, lng, distance: 1)
 
         if images == true
-           @images = @client.media_search(lat, lng, distance: 5).take(5)
+           @images = @client.media_search(lat, lng, distance: 5).take(10)
         else
-           @images = @client.media_search(lat, lng, distance: 20).take(5)
+           @images = @client.media_search(lat, lng, distance: 10).take(10)
         end
 
         return @images 

@@ -89,6 +89,10 @@ h4 {
 	border: 1px solid $lightslate;
 }
 
+.modal-dialog.map {
+  width:900px;
+}
+
 // INSTAGRAM IMAGES //////////
 
 
@@ -148,7 +152,7 @@ p.inner-photo {
 
 .instagram-small {
   width: 44px;
-  padding-right: 4px;
+  padding: none;
   -webkit-transition: all ease-in-out 100ms;
   transition: all ease-in-out 100ms;
   // background-color: $lightgray;
@@ -577,11 +581,12 @@ footer {
 
     .review-box {
       padding: 5px 10px;
+      font-size: 12px;
     }
 
     .container-fluid {
-      padding-left: 20px;
-      padding-right: 20px;
+      padding-left: 15px;
+      padding-right: 15px;
     }
 
     .row{
@@ -601,10 +606,10 @@ footer {
       padding: 3px 3px;
     }
     h3 {
-      font-size: 20px;
+      font-size: 15px;
     }
     h4.bold-red {
-       font-size: 12px;
+       font-size: 8px;
     }
     .angular-google-map-container { 
       width: 212px; 
