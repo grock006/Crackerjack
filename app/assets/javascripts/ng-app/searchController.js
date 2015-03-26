@@ -50,6 +50,21 @@ $scope.searchName = function(name, location){
     location = $scope.details.address_components[2].long_name + " " + $scope.details.address_components[3].short_name
     $scope.google = $scope.details
 
+
+    // $scope.googleRating = function(){
+    //     var sum = 0;
+    //     // var totalGoogleUserRating = 0;
+    //     // $scope.totalGoogleUserRating = 0;
+    //     for(var i = 0; i < $scope.google.user_ratings_total; i++){
+    //       sum += $scope.google.reviews[i].rating;
+    //         console.log(sum);
+    //         //  $scope.totalGoogleUserRating = sum
+    //         //  console.log(totalGoogleUserRating)
+    //     }
+    // }
+
+    // $scope.googleRating();
+
     var images = ImageResource(name, location);
 
     $scope.imageresults = []

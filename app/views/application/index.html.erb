@@ -3,58 +3,63 @@
 <div class="container-fluid">
 	<div class="row">
 
-	  <div class="col-md-7"> 
+	  <div class="col-md-4"> 
 
-			<div class="row">    
+				<div class="row">    
 
-				 <div class="col-md-7">
-					
-					<%= render partial: 'reviewbox' %>
-				 
-				 </div>
-				 <div class="col-md-5">
-					
-					<%= render partial: 'restaurant' %>
-										
-				 </div>
-			</div>
+					 <div class="col-md-12">
+						
+						<%= render partial: 'reviewbox' %>
+					 
+					 </div>
+				</div>
 	  </div>	
 
 
-	  <div class="col-md-5">       
+	  <div class="col-md-8">       
 	
-		<div class="row" style="margin-bottom: -25px">	
-			<div class="col-md-6">
+				<div class="row">	
+					
+						 <div class="col-md-4">
+							
+							<%= render partial: 'restaurant' %>
+												
+						 </div>
 
-				<%= render partial: 'map' %>
-			
-			</div>
-			<div class="col-md-6">
-				<a href="{{imageLink}}" target="_blank">
-				<div class="main-image-container">
-					<p class="inner-photo"><img style="width:20%; border-radius:3px" src="{{userPic}}">
-						<span style="padding-left:4px">{{userName}}</span>
-					</p>
-					<img src="{{main_image_url}}" class="main-image">
-					<p class="inner-text">{{imageText}}</p>
+						<div class="col-md-4">
+
+							<%= render partial: 'map' %>
+						
+						</div>
+
+					<div class="col-md-4 main-image-bootstrap">
+						<a href="{{imageLink}}" target="_blank">
+						<div class="main-image-container">
+							<p class="inner-photo"><img style="width:20%; border-radius:3px" src="{{userPic}}">
+								<span style="padding-left:4px">{{userName}}</span>
+							</p>
+							<img src="{{main_image_url}}" class="main-image">
+							<p class="inner-text">{{imageText}}</p>
+						</div>
+						</a>
+							<br>
+
+							<div class="row">
+								<div class="col-md-12">
+
+									<%= render partial: 'instagram' %>
+								
+								</div>
+							</div>
+
+
+
+					</div>			
 				</div>
-				</a>
-			</div>			
-		</div>
-
-		<br>
-		<br>
-
-		<div class="row">
-			<div class="col-md-12">
-
-				<%= render partial: 'instagram' %>
-			
-			</div>
-		</div>
 
 
-		</div>
+
+	</div>
 
 		
 
@@ -73,11 +78,13 @@
 
 		<div class="col-md-8"> 
 
+			<br>
 			<%= render partial: 'critics' %>
 								
 	     </div>
 	<!-- End Row -->
 	</div>
+
 
 <!-- End Container -->
 </div>
