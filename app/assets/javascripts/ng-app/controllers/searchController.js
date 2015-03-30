@@ -1,6 +1,6 @@
 app.controller("searchController",function($scope, ImageResource, ReviewResource, YelpResource, usSpinnerService){
 
-    $scope.errorMessage = ""
+    $scope.mainErrorMessage = null;
     $scope.descriptionClass = "description";
     $scope.darkBackground = "dark-background";
 
@@ -50,21 +50,6 @@ $scope.searchName = function(name, location){
     location = $scope.details.address_components[2].long_name + " " + $scope.details.address_components[3].short_name
     $scope.google = $scope.details
 
-
-    // $scope.googleRating = function(){
-    //     var sum = 0;
-    //     // var totalGoogleUserRating = 0;
-    //     // $scope.totalGoogleUserRating = 0;
-    //     for(var i = 0; i < $scope.google.user_ratings_total; i++){
-    //       sum += $scope.google.reviews[i].rating;
-    //         console.log(sum);
-    //         //  $scope.totalGoogleUserRating = sum
-    //         //  console.log(totalGoogleUserRating)
-    //     }
-    // }
-
-    // $scope.googleRating();
-
     var images = ImageResource(name, location);
 
     $scope.imageresults = []
@@ -85,9 +70,7 @@ $scope.searchName = function(name, location){
         if (data){
             $scope.stopSpin();
             console.log("hello world");
-        }
-    console.log(data);
-    console.log(data.$resolved);    
+        } 
     $scope.reviewresults = data;  
     $scope.totalAverage = parseInt(data[0]['docSentiment']['totalAverage']);
     $scope.positiveReviews = parseInt(data[0]['docSentiment']['pos_total']);
@@ -99,6 +82,14 @@ $scope.searchName = function(name, location){
                             ];
     $scope.rating = (($scope.positiveReviews / $scope.totalReviews) * 100) / 20    
     });
+
+    // $scope.reviewresults.$promise.then(function(error){
+    //     $scope.stopSpin();
+    //     $scope.descriptionClass = "description";
+    //     $scope.mainErrorMessage = "Sorry, something has gone wrong. Your restaurant might not have enough reviews. Please try again or try another restaurant."
+    //     console.log("error test")
+    //     console.log(error)
+    // });
     
 
     var yelp = YelpResource(name, location);

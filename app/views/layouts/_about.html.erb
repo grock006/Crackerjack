@@ -1,0 +1,17 @@
+<div class="modal" id="about" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog landing">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title bold-red" id="myModalLabel">About Crackerjack</h4>
+      </div>
+      <div class="modal-body">
+		   <p>Crackerjack is a web application built with the intention of creating a “Rotten Tomatoes” style ranking system for restaurants. It uses the Nokogiri gem and Readability Parser API to scrape Google search results for restaurant reviews, and the <a href="http://www.alchemyapi.com/products/demo/alchemylanguage" target="_blank">Alchemy Sentiment Analysis API</a> to analyze results for positive or negative content.</p>
+
+			<p>With each restaurant search, results for relevant publications and blog reviews are scraped from Google search pages using a custom Ruby scraper. The scraper was created specifically for this project using Nokogiri combined with the Readability Parser API to break the article into title, content, author, etc.</p>
+
+			<p>Article content is passed through the Alchemy Language API which analyzes the text and returns a postive or negative "Sentiment Analysis," which is calculated together to give it a total scores, which is compared against the Google Places and Yelp restaurant ratings.</p>
+      </div>
+    </div>
+  </div>
+</div>

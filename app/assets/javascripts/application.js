@@ -15,6 +15,7 @@
 //= require angular
 //= require angular-resource
 //= require angular-animate
+//= require angular-ui-router
 //= require bootstrap-sprockets
 //= require angular-ui-bootstrap
 //= require tooltip
@@ -23,6 +24,8 @@
 //= require underscore
 //= require spin.min
 //= require angular-spinner.min
+//= require angular-rails-templates
+//= require_tree ../templates
 //= require ng-app/main
 //= require_tree .
 

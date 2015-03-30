@@ -13,4 +13,14 @@ Rails.application.routes.draw do
     	resources :restaurants
   	end
 
+    namespace :api do
+        # session routes for login and logout
+        post '/login' => 'sessions#create'
+        delete '/logout' => 'sessions#destroy'
+
+        # user routes for sign up and to validate current user
+        post '/signup' => 'users#create'
+        get '/currentuser' => 'users#show'
+    end
+
 end

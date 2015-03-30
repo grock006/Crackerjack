@@ -27,6 +27,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Angular JS
 gem 'angularjs-rails'
+#Angular Templates
+gem "angular-rails-templates"
 
 # Instagram
 gem 'instagram'

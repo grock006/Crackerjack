@@ -1,0 +1,54 @@
+<div class="modal" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog landing">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title bold-red" id="myModalLabel">SIGNUP</h4>
+      </div>
+      <div class="modal-body" ng-controller="signupController">
+
+       <!--      <div ng-if="!currentUser"> -->
+              <div class="signup-create"></div>
+                <h3>Sign up now!</h3>
+                <form>
+                  <div class="form-group">
+                    Pick a username:
+                    <input type='text' class="form-control" ng-model="user.username">
+                    <span ng-show="errors.username" class="label label-danger pull-right">
+                      <span class="glyphicon glyphicon-exclamation-sign"></span> 
+                      username {{errors.username[0]}}
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    Email:
+                    <input type='text' class="form-control" ng-model="user.email">
+                    <span ng-show="errors.email" class="label label-danger pull-right">
+                      <span class="glyphicon glyphicon-exclamation-sign"></span> 
+                      email {{errors.email[0]}}
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    Password:
+                    <input type='password' class="form-control" ng-model="user.password">
+                    <span ng-show="errors.password" class="label label-danger pull-right">
+                      <span class="glyphicon glyphicon-exclamation-sign"><span> 
+                      password {{errors.password[0]}}
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    Confirm:
+                    <input type='password' class="form-control" ng-model="user.password_confirmation">
+                    <span ng-show="errors.password_confirmation" class="label label-danger pull-right">
+                      <span class="glyphicon glyphicon-exclamation-sign"></span> 
+                      password confirmation {{errors.password_confirmation[0]}}
+                    </span>
+                  </div>
+                  <button class="btn btn-default" ng-click="signup()">Register</button>
+                </form>
+              </div>
+         <!--    </div> -->
+		   
+      </div>
+    </div>
+  </div>
+</div>

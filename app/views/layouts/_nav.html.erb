@@ -22,14 +22,31 @@
                  <span class="error-message" ng-show="errorMessage.length > 0">{{errorMessage}}</span> 
       </ul>
       
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a href="#" class="bold" data-toggle="modal" data-target="#about">ABOUT</a>
-        </li>
-        <li>
-          <a href="#" class="bold" data-toggle="modal" data-target="#contact">CONTACT</a>
-        </li>
-      </ul>
+ 
+
+        <!-- currentUser signed in -->
+        <span ng-show="currentUser">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" class="bold" data-toggle="modal" data-target="#about">ABOUT</a></li>
+            <li><a href="#" class="bold" data-toggle="modal" data-target="#contact">CONTACT</a></li>
+            <li><a href="#" class="bold">{{currentUser.username | uppercase}}</a></li>
+            <li><a href="#" class="bold" ng-click="logout()">Logout</a></li>
+          </ul>
+        </span>
+          <!-- End currentUser signed in -->
+        
+      
+      <!-- Not currentUser -->
+        <span ng-show="!currentUser">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a ui-sref="about">ABOUT</a></li>
+<!--             <li><a href="#" class="bold" data-toggle="modal" data-target="#about">ABOUT</a></li> -->
+            <li><a href="#" class="bold" data-toggle="modal" data-target="#contact">CONTACT</a></li>
+            <li><a href="#" class="bold" data-toggle="modal" data-target="#signup">SIGNUP</a></li>
+            <li><a href="#" class="bold" data-toggle="modal" data-target="#login">LOGIN</a></li>
+          </ul>
+        </span>
+      <!-- End Not currentUser -->
 
     </div>
   </div>

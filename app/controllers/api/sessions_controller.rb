@@ -1,25 +1,18 @@
-module Api
-class SessionsController < ApplicationController
+class Api::SessionsController < ApplicationController
 
-  def new
-  end
-
-  def create # the act of logging in
-    user = User.find_by(email: params[:user][:email])
-
+  def create
+    user = User.find_by(username: params[:user][:username])
     if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
-      redirect_to "/map"
+      render json: user, only: [:id, :username], status: 200  
     else
-      flash.now[:danger] = "Username or password incorrect."
-      render :new
+      render json: {error: "Username or password is incorrect"}
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to '/login'
+    render json: nil, status: 200
   end
 
-end
 end
