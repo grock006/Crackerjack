@@ -16,40 +16,7 @@
 
 <%= render partial: "layouts/nav" %>	
 
- <div class="mobile-search">
-   <form ng-submit="searchName()" class="regular-hidden mobile-show" role="search">
-              <input type="text"  ng-autocomplete ng-model="name" options="options1" details="details" required="required" class="form-control" placeholder="Search by Restaurant for Food Critic Reviews" style="float:left"/>   
-             <button type="submit" class="btn btn-default search-btn" value="Search"><i class="fa fa-search"></i></button>
-    </form>
-  </div>
-
-<!-- Spinner -->
-<div ng-hide="reviewresults.length > 0 && imageresults.length > 0">
-<span us-spinner="{radius:19, width:30, length:0, corners:0.1, color:'white', lines:17, speed:1.6, shadow:on, trail:74}" spinner-key="spinner-1"></span>
-</div>
-<!-- End Spinner -->
-
 <%= yield %>
-<div ui-view></div>
-
-  <div ng-class="descriptionClass">
-    {{mainErrorMessage}}<br>
-    <h1>Search by Restaurant to Find Opinions of <strong>Professional Food Critics</strong><br>transformed into <span class="bold-maroon"><br>Ratings.</span></h1>
-  </div>
-
-<div class="background-image-main" class="fade-out">
-<div ng-class="darkBackground">
-
-<!-- About Modal -->
-    <%= render partial: "layouts/about" %>  
-<!-- Contact Modal -->
-     <%= render partial: "layouts/contact" %>  
-<!-- Signup Modal -->
-    <%= render partial: "layouts/signup" %>  
-<!-- Login Modal -->
-     <%= render partial: "layouts/login" %>       
-</div>
-</div>
 
 </div>
 

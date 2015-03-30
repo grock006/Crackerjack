@@ -27,8 +27,8 @@
         <!-- currentUser signed in -->
         <span ng-show="currentUser">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" class="bold" data-toggle="modal" data-target="#about">ABOUT</a></li>
-            <li><a href="#" class="bold" data-toggle="modal" data-target="#contact">CONTACT</a></li>
+            <li><a ui-sref="about">ABOUT</a></li>
+            <li><a ui-sref="contact">CONTACT</a></li>
             <li><a href="#" class="bold">{{currentUser.username | uppercase}}</a></li>
             <li><a href="#" class="bold" ng-click="logout()">Logout</a></li>
           </ul>
@@ -40,10 +40,9 @@
         <span ng-show="!currentUser">
           <ul class="nav navbar-nav navbar-right">
             <li><a ui-sref="about">ABOUT</a></li>
-<!--             <li><a href="#" class="bold" data-toggle="modal" data-target="#about">ABOUT</a></li> -->
-            <li><a href="#" class="bold" data-toggle="modal" data-target="#contact">CONTACT</a></li>
-            <li><a href="#" class="bold" data-toggle="modal" data-target="#signup">SIGNUP</a></li>
-            <li><a href="#" class="bold" data-toggle="modal" data-target="#login">LOGIN</a></li>
+            <li><a ui-sref="contact">CONTACT</a></li>
+            <li><a ui-sref="signup">SIGNUP</a></li>
+            <li><a ui-sref="login">LOGIN</a></li>
           </ul>
         </span>
       <!-- End Not currentUser -->
@@ -53,4 +52,10 @@
 </nav>
 
 
+ <div class="mobile-search">
+   <form ng-submit="searchName()" class="regular-hidden mobile-show" role="search">
+              <input type="text"  ng-autocomplete ng-model="name" options="options1" details="details" required="required" class="form-control" placeholder="Search by Restaurant for Food Critic Reviews" style="float:left"/>   
+             <button type="submit" class="btn btn-default search-btn" value="Search"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
 

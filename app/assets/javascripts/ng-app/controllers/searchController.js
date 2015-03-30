@@ -1,4 +1,4 @@
-app.controller("searchController",function($scope, ImageResource, ReviewResource, YelpResource, usSpinnerService){
+app.controller("searchController",function($scope, $injector, ImageResource, ReviewResource, YelpResource, usSpinnerService){
 
     $scope.mainErrorMessage = null;
     $scope.descriptionClass = "description";
@@ -113,6 +113,8 @@ $scope.searchName = function(name, location){
        }
     
     });
+
+    $injector.get('$state').transitionTo('search');
 
  };
    

@@ -13,10 +13,28 @@ app.config(['$stateProvider', '$urlRouterProvider',
     $stateProvider
       .state('index', {
         url: '/',
-        templateUrl: 'index.html'
+        templateUrl: 'index.html',
+        controller: 'searchController'
+      })
+      .state('search', {
+        url: '/search',
+        templateUrl: 'search.html',
+        controller: 'searchController'
       })
       .state('about', {
         url: '/about',
+        templateUrl: 'about.html'
+      })
+      .state('contact', {
+        url: '/contact',
+        templateUrl: 'about.html'
+      })
+        .state('login', {
+        url: '/login',
+        templateUrl: 'about.html'
+      })
+        .state('signup', {
+        url: '/signup',
         templateUrl: 'about.html'
       });
      
