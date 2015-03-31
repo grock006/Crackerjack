@@ -1,4 +1,4 @@
-app.controller("signupController",function($scope, $http, $rootScope){
+app.controller("signupController",function($scope, $http, $rootScope, $injector){
 
   
     $scope.user = {
@@ -25,6 +25,7 @@ app.controller("signupController",function($scope, $http, $rootScope){
         }
       
       });
+          $injector.get('$state').transitionTo('login');
     };
 
 

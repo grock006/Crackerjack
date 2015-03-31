@@ -1,0 +1,63 @@
+			    	<!-- CRITIC REVIEWS -->
+					    	<div class="row">
+					    		<div class="col-md-1"></div>
+	
+					    		<div class="col-md-10">
+	
+					    		<div ng-repeat="x in reviewresults track by $index">
+					    	
+					    	
+
+					    		<!-- Critic Box -->
+					    		<div class="critic-box">
+
+					    		<div class="row">			
+					    		<div class="col-md-1" style="padding-top:15px">	
+								
+								<h2 class="bold-red">
+									<span ng-show="x.docSentiment['type'] == 'positive' ">	
+										<span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
+										</span>
+									</span>
+
+									<span ng-show="x.docSentiment['type'] == 'negative' ">	
+										<span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-thumbs-down fa-stack-1x fa-inverse"></i>
+										</span>
+									</span>
+								</h2>
+
+
+								</div>
+								
+								<div class="col-md-1"></div>	
+								<div class="col-md-10">
+
+									<h2><span class="bold-red">{{x.domain.replace("www.", "").replace(".com", "") | uppercase }}</span> | <em>{{x.title}}</em></h2>
+										<!-- <p>{{x.date_published | date: "fullDate" }}</p> -->
+									<p>{{x.docSentiment["contentExcerpt"] | limitTo:210}} ... <a href="{{x.url}}" target="_blank">Read Full Review</a></p>
+									<em>{{x.author}}</em>
+										<div ng-show="x.docSentiment['score'] != null">
+											<span class="bold">Score:</span> {{x.docSentiment["score"] | number:0}} {{x.docSentiment["type"] | uppercase}}<br>
+										</div>
+								<!-- 		<p><span class="bold">Keywords:</span><em> {{x.docSentiment["keywords"][1].text}}, {{x.docSentiment["keywords"][2].text}}, {{x.docSentiment["keywords"][3].text}}, {{x.docSentiment["keywords"][4].text}}, {{x.docSentiment["keywords"][5].text}}, {{x.docSentiment["keywords"][6].text}}</em></p> -->
+								</div>
+								<!-- End Critic Box -->
+								<br>
+								
+								</div>
+								
+								</div>
+
+
+
+	
+
+								</div>
+								<!-- End ng-repeat  -->
+
+							</div>
+							<!-- End Col-md-10 -->
+	
+							<div class="col-md-1"></div>
+						</div>
+						<!-- END CRITIC REVIEWS -->

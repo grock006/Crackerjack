@@ -17,7 +17,7 @@
 //= require angular-animate
 //= require angular-ui-router
 //= require bootstrap-sprockets
-//= require angular-ui-bootstrap
+//= require angular-ui-bootstrap-tpls
 //= require tooltip
 //= require nprogress
 //= require nprogress-angular

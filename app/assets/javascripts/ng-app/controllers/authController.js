@@ -1,4 +1,4 @@
-app.controller("authController",function($scope, $http, $rootScope){
+app.controller("authController",function($scope, $http, $rootScope, $injector){
 
 
     $scope.login = function() {
@@ -12,15 +12,13 @@ app.controller("authController",function($scope, $http, $rootScope){
             if(data) {
               $rootScope.currentUser = data;
               loggedIn = true;
-              $('#login').modal('hide');
-              window.reload();
               }
             });
         }
 
       
       });
-    
+          $injector.get('$state').transitionTo('index');
   };
 
 

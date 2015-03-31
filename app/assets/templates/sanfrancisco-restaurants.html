@@ -1,0 +1,22 @@
+	    	<div class="row">			
+				<div class="col-md-10">
+					<ul style="list-style:none;">
+					<div ng-repeat="x in restaurants | orderBy:'-rating' ">
+					
+						<span ng-show="x.location == 'San Francisco CA'">
+						<li>
+							<span ng-show="x.rating > 3">
+								<span class="fa-stack fa-lg bold-red"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
+							</span>
+							{{ x.rating | number:1}} <strong>{{x.name}}</strong>
+						</li>
+						</span>
+					</span>
+														
+					</div>
+					</ul>
+
+				</div>
+
+			<div class="col-md-2"></div>						    	
+		  </div>
