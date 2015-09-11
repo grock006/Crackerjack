@@ -1,4 +1,12 @@
-var app = angular.module("myApp",['ngResource', 'ui.router', 'templates', 'uiGmapgoogle-maps', 'nprogress-rails', 'ngAutocomplete', 'angularSpinner', 'ui.bootstrap']);
+var app = angular.module("myApp",
+                        [ 'ngResource', 
+                          'ui.router', 
+                          'templates', 
+                          'uiGmapgoogle-maps', 
+                          'nprogress-rails', 
+                          'ngAutocomplete', 
+                          'angularSpinner', 
+                          'ui.bootstrap']);
 
 //configuration 
 app.config(['$httpProvider',
@@ -23,11 +31,13 @@ app.config(['$stateProvider', '$urlRouterProvider',
       })
       .state('about', {
         url: '/about',
-        templateUrl: 'about.html'
+        templateUrl: 'about.html',
+        controller: 'searchController'
       })
       .state('contact', {
         url: '/contact',
-        templateUrl: 'contact.html'
+        templateUrl: 'contact.html',
+        controller: 'searchController'
       })
         .state('login', {
         url: '/login',

@@ -61,7 +61,21 @@ h4 {
 }
 
 .form-control {
-  width: 75%
+  width: 100%;
+}
+
+.form-control {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container-fluid {
+    padding-left: 15px; 
+    padding-right: 15px;
+}
+
+.view-container{
+  margin: 0 15px;
 }
 
 // BUTTONS //////////////////////////////
@@ -177,7 +191,11 @@ p.inner-photo {
   margin-top: 10px;
 }
 
-.navbar > .container-fluid .navbar-brand {
+a.navbar-brand.bold-red{
+  color: $crimson;
+}
+
+.navbar-default .navbar-brand {
 	font-weight: 800;
 	color: $crimson;
 	font-size: 40px;
@@ -232,7 +250,7 @@ p.inner-photo {
 }
 
 .navbar-form .form-control {
-    width: 450px;
+    width: 375px;
 }
 
 // LOADING BAR AND SPINNER ///////////
@@ -451,6 +469,38 @@ footer {
     background-repeat: no-repeat;
 }
 
+.background-image-about {
+    margin-top: -20px;
+    background-image: url("main_five.jpg");
+    background-size: cover;
+    height: 800px;
+    background-repeat: no-repeat;
+}
+
+.background-image-contact {
+    margin-top: -20px;
+    background-image: url("main_seven.jpg");
+    background-size: cover;
+    height: 800px;
+    background-repeat: no-repeat;
+}
+
+.background-image-signup {
+    margin-top: -20px;
+    background-image: url("main_six.jpg");
+    background-size: cover;
+    height: 800px;
+    background-repeat: no-repeat;
+}
+
+.background-image-login {
+    margin-top: -20px;
+    background-image: url("main_three.jpg");
+    background-size: cover;
+    height: 800px;
+    background-repeat: no-repeat;
+}
+
 .dark-background {
     background-color: rgba(0,0,0,0.5);
     background-image: url("3px-tile.png");
@@ -467,6 +517,11 @@ footer {
     width: 100%;
     z-index: 2; 
     transition: background-color 0.1s ease-out;
+}
+
+.center-box{
+   margin: 75px auto;
+   background-color: rgba(255,255,255,0.5);
 }
 
 .description {
